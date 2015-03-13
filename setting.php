@@ -7,9 +7,9 @@ define('CNF_PRICEPOST','10000');
 define('CNF_FOOTER','<p>-Trụ Sở Ch&iacute;nh: 235 Nguyễn Văn Cừ, Quận 1, TP HCM</p>
 <p>-Điện Thoại: 0906.38.75.39</p>
 <p>-Email: yenthao1111@gmail.com</p>');
-define('CNF_APPNAME','DichVuUber.Com');
+define('CNF_APPNAME','Dongho.Com');
 define('CNF_APPDESC','Internal PHP Application');
-define('CNF_COMNAME','DichVuUber.Com');
+define('CNF_COMNAME','Dongho.Com');
 define('CNF_EMAIL','yenthao1111@gmail.com');
 define('CNF_METAKEY','Dịch Vụ Uber, DichvuUber,UBer, dichung, dinhoxe,');
 define('CNF_METADESC','Taxi Tự Do Cho Mọi Nhà');
@@ -23,8 +23,8 @@ define('CNF_REGIST','true');
 define('CNF_FRONT','true');
 define('CNF_RECAPTCHA','true');
 define('CNF_THEME','uber');
-define('CNF_RECAPTCHAPUBLICKEY','6Ldg6_ISAAAAAGn4r9WpJwL7jEameeErktf4Jjos');
-define('CNF_RECAPTCHAPRIVATEKEY','6Ldg6_ISAAAAAMsBDL9GqFq4t5kQzCAOuYFsyKhN');
+define('CNF_RECAPTCHAPUBLICKEY','6LdecgMTAAAAAH-JYoi-WKeG_8yORz06zNIRs6oK');
+define('CNF_RECAPTCHAPRIVATEKEY','6LdecgMTAAAAAKry-V-Rg5vC8XvR1x3O9THn04hC');
 define('CNF_VAT','1');
 define('CNF_VAT_VAL','10');
 ?>
