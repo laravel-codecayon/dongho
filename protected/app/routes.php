@@ -69,6 +69,7 @@ Route::group(array('before' => 'auth'), function()
 	Route::controller('nproducts', 'NproductsController');
 	Route::controller('Nproducts', 'NproductsController');
 	Route::controller('ncategories', 'NcategoriesController');
+	Route::controller('Ncategories', 'NcategoriesController');
 	Route::get('upload-image.html', 'NproductsController@uploadimage');
 	/* END CORE APPLICATION  */
 	

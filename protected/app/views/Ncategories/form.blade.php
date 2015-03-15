@@ -52,7 +52,7 @@
 								  <div class="form-group  " >
 									<label for="Description" class=" control-label col-md-4 text-left"> {{ Lang::get('core.category_des') }} </label>
 									<div class="col-md-6">
-									  {{ Form::text('Description', $row['Description'],array('class'=>'form-control', 'placeholder'=>'',   )) }} 
+									  {{ Form::textarea('Description', $row['Description'],array('class'=>'form-control', 'placeholder'=>'',   )) }} 
 									 </div> 
 									 <div class="col-md-2">
 									 	

@@ -109,7 +109,7 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Mews\Purifier\PurifierServiceProvider',
 		'Greggilbert\Recaptcha\RecaptchaServiceProvider',
-		'Barryvdh\DomPDF\ServiceProvider',
+		//'Barryvdh\DomPDF\ServiceProvider',
 	),
 
 	/*
@@ -177,7 +177,7 @@ return array(
 		'View'            => 'Illuminate\Support\Facades\View',
 		'Purifier' => 'Mews\Purifier\Facades\Purifier',
 		'Yaml' => 'Symfony\Component\Yaml\Yaml',
-		'PDF'             => 'Barryvdh\DomPDF\Facade',
+		//'PDF'             => 'Barryvdh\DomPDF\Facade',
 	),
 
 );

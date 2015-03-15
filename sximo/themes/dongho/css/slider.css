@@ -113,7 +113,7 @@
 }
 /* mouse grab icon */
 .grabbing {
-	cursor: url(http://demot103.web4s.vn/templates/t1-03/css/grabbing.png) 8 8, move;
+	cursor: url(../../../index.html) 8 8, move;
 }
 /* fix */
 .owl-carousel .owl-wrapper, .owl-carousel .owl-item {
@@ -192,7 +192,7 @@
 /* preloading images */
 .owl-item.loading {
 	min-height: 150px;
-	background: url(http://demot103.web4s.vn/templates/t1-03/css/AjaxLoader.gif) no-repeat center center
+	background: url(../../../index.html) no-repeat center center
 }
 .owl-carousel .owl-wrapper:after {
 	content: ".";
@@ -237,7 +237,7 @@
 }
 /* mouse grab icon */
 .grabbing {
-	cursor: url(http://demot103.web4s.vn/templates/t1-03/css/grabbing.png) 8 8, move;
+	cursor: url(../../../index.html) 8 8, move;
 }
 /* fix */
 .owl-carousel .owl-wrapper, .owl-carousel .owl-item {

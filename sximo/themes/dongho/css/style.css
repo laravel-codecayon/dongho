@@ -4,8 +4,8 @@ html {
 /* Fontface */
 @font-face {
 	font-family: 'bebas';
-	src: url('http://demot103.web4s.vn/templates/t1-03/fonts/bebas.eot');
-	src: url('http://demot103.web4s.vn/templates/t1-03/fonts/bebas.eot?#iefix') format('embedded-opentype'), url('http://demot103.web4s.vn/templates/t1-03/fonts/bebas.woff') format('woff'), url('http://demot103.web4s.vn/templates/t1-03/fonts/bebas.ttf') format('truetype');
+	src: url('../fonts/bebas.eot');
+	src: url('../fonts/bebasd41d.eot?#iefix') format('embedded-opentype'), url('../fonts/bebas.woff') format('woff'), url('../fonts/bebas.ttf') format('truetype');
 	font-weight: 400;
 	font-smooth: always;
 	-webkit-font-smoothing: subpixel-antialiased!important;
@@ -16,7 +16,7 @@ html {
  @media screen and (-webkit-min-device-pixel-ratio:0) {
 @font-face {
 	font-family: bebas;
-	src: url(http://demot103.web4s.vn/templates/t1-03/fonts/bebas.svg) format(svg)
+	src: url(../fonts/bebas.svg) format(svg)
 }
 }
 html, body {
@@ -477,7 +477,7 @@ ul.links li {
 /* HEADER
 -------------------------------------------------- */
 .top-logo {
-	background: #010205 url(http://demot103.web4s.vn/templates/t1-03/assests/header-banner.jpg) no-repeat center top
+	background: #010205 url(../assests/header-banner.jpg) no-repeat center top
 }
 .top-logo .logo {
 	padding: 56px 0px;
@@ -794,7 +794,7 @@ html, body, .st-container, .st-pusher, .st-content {
 .st-pusher {
 	position: relative;
 	left: 0;
-	z-index: 99;
+	/*z-index: 99;*/
 	height: 100%;
 	-webkit-transition: -webkit-transform 0.5s;
 	transition: transform 0.5s;
@@ -1087,7 +1087,7 @@ a.arrow-sub i {
 	font-family: bebas, Arial, Helvetica, sans-serif;
 	border-bottom: 3px solid #d50133;
 	margin-bottom: 15px;
-	background: url(http://demot103.web4s.vn/templates/t1-03/assests/img-clock.png) no-repeat left top
+	background: url(../assests/img-clock.png) no-repeat left top
 }
 #products-featured h2 span, #product-listitem .listitem h2 span, #customer .itemcus h2 span, .news h2 span, .accordion h2 span, .order_reviews h2 span, #acc > .itemacc > .acc-cart > h2 span, .acc-info >h2 span, .contact-form >h2 span, .contact-info >h2 span, #gallery-pic h2 span, #email-newsletter h2 span, #box_search h2 span {
 	padding: 12px 10px 10px 70px;
@@ -1269,11 +1269,7 @@ a.arrow-sub i {
 	text-align: center;
 	display: block	
 }
-.detail .img-blog #main_img{
-	margin: 0 auto 10px auto;
-	text-align: center;
-	display: block	
-}
+
 .detail .img-blog img {
 	border: 1px solid #e5e5e5;
 	margin-bottom: 10px;
@@ -2147,7 +2143,7 @@ a.arrow-sub-vmenu i {
 .box-category .heading h2 {
 	font-family: 'bebas', Arial, Helvetica, sans-serif;
 	border-bottom: 3px solid #d50133;
-	background: url(http://demot103.web4s.vn/templates/t1-03/assests/img-clock.png) no-repeat left top
+	background: url(../assests/img-clock.png) no-repeat left top
 }
 .box-category .heading h2 span {
 	padding: 12px 10px 10px 70px;
@@ -2337,7 +2333,7 @@ a.arrow-sub-vmenu i {
 }
 .line {
 	height: 5px;
-	background: url(http://demot103.web4s.vn/templates/t1-03/assests/line.jpg) repeat-x;
+	background: url(../assests/line.jpg) repeat-x;
 	margin: 10px 0
 }
 .box-category .main .link li {
@@ -3586,7 +3582,7 @@ footer .copyright p a {
 }
 /* 404 */
 .page_error_01{
-  background: url(http://demot103.web4s.vn/public/error_page/01.jpg) no-repeat 50% 50%;
+  background: url(../../../public/error_page/01.jpg) no-repeat 50% 50%;
   height:600px;
   position:relative;
   margin-top: 25px
@@ -3606,7 +3602,7 @@ footer .copyright p a {
 }
 
 .page_error_02{
-  background: url(http://demot103.web4s.vn/public/error_page/02.jpg) no-repeat 50% 50%;
+  background: url(../../../public/error_page/02.jpg) no-repeat 50% 50%;
   height:600px;
   position:relative;
   margin-top: 25px
@@ -3628,7 +3624,7 @@ footer .copyright p a {
 }
 
 .page_error_03{
-  background: url(http://demot103.web4s.vn/public/error_page/03.jpg) no-repeat 50% 50%;
+  background: url(../../../public/error_page/03.jpg) no-repeat 50% 50%;
   height:600px;
   position:relative;
   margin-top: 25px
@@ -3649,7 +3645,7 @@ footer .copyright p a {
 }
 
 .page_error_04{
-  background:url(http://demot103.web4s.vn/public/error_page/04.jpg) no-repeat 50% 50%;
+  background:url(../../../public/error_page/04.jpg) no-repeat 50% 50%;
   height:600px;
   position:relative;
   margin-top: 25px
@@ -3671,7 +3667,7 @@ footer .copyright p a {
 }
 
 .page_error_05{
-  background:url(http://demot103.web4s.vn/public/error_page/05.jpg) no-repeat 50% 50%;
+  background:url(../../../public/error_page/05.jpg) no-repeat 50% 50%;
   height:600px;
   position:relative;
   margin-top: 25px

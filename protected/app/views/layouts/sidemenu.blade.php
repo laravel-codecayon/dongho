@@ -72,6 +72,12 @@
 				@endif
 			</li>
 		@endforeach-->
+		<li @if(Request::is('nproducts')) class="active" @endif>
+			<a href="{{ URL::to('nproducts')}}"><i class="icon-drawer3"></i> <span class="nav-label">Sản phẩm</span><span class="fa arrow"></span></a>
+		</li>
+		<li @if(Request::is('ncategories')) class="active" @endif>
+			<a href="{{ URL::to('ncategories')}}"><i class="icon-drawer3"></i> <span class="nav-label">Danh mục sản phẩm</span><span class="fa arrow"></span></a>
+		</li>
 		<li @if(Request::is('customer')) class="active" @endif>
 			<a href="{{ URL::to('customer')}}"><i class="icon-drawer3"></i> <span class="nav-label">Khách hàng</span><span class="fa arrow"></span></a>
 		</li>

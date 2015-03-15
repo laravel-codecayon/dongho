@@ -7,38 +7,31 @@
     <meta charset="utf-8">
    
     <!-- Favicon --> 
-	<link rel="shortcut icon" href="profiles/demot103web4svn/uploads/logo/1417582258_favicon.ico">
-    
-    <!-- this styles only adds some repairs on idevices  -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-    <title>Web đồng hồ, web4steps 3.0, kho giao diện thiết kế web</title>
-	<meta name="description" content="Dịch vụ thiết kế web trọn gói web4steps trực thuộc công ty phần mềm Nhân Hòa">
-	<meta name="keywords" content="Web đồng hồ, web4steps 3.0, kho giao diện, thiết kế web, web trọn gói, web giá rẻ, web nhân hòa">
+	<meta name="keywords" content="{{ CNF_METAKEY }}">
+    <meta name="description" content="{{ CNF_METADESC }}">
+    <link rel="shortcut icon" href="{{ URL::to('')}}/logo.ico" type="image/x-icon">
         <!-- Bootstrap -->
-    <link href="templates/t1-03/css/bootstrap.min.css" rel="stylesheet">
+    {{ HTML::style('sximo/themes/dongho/css/bootstrap.min.css')}}
     <!-- Font Awesome -->
-    <link href="templates/t1-03/css/font-awesome.min.css" rel="stylesheet">
+    {{ HTML::style('sximo/themes/dongho/css/font-awesome.min.css')}}
 	<!-- Style -->
-    <link href="templates/t1-03/css/reset.css" rel="stylesheet">
-	<link href="templates/t1-03/css/style.css" rel="stylesheet">
+    {{ HTML::style('sximo/themes/dongho/css/reset.css')}}
+    {{ HTML::style('sximo/themes/dongho/css/style.css')}}
     <!-- Style Responsive -->
-   	<link href="templates/t1-03/css/style-responsive.css" rel="stylesheet">
+    {{ HTML::style('sximo/themes/dongho/css/style-responsive.css')}}
     <!-- owl Slider -->
-    <link href="templates/t1-03/css/slider.css" rel="stylesheet">
+    {{ HTML::style('sximo/themes/dongho/css/slider.css')}}
     <!-- SLIDER REVOLUTION Main Slider -->
-    <link href="templates/t1-03/css/captions.css" rel="stylesheet">
-    <link href="templates/t1-03/css/settings.css" rel="stylesheet">
-    <link href="profiles/demot103web4svn/cache/custom.css" rel="stylesheet">
-    <link href="templates/t1-03/css/magnific-popup.css" rel="stylesheet">
+    {{ HTML::style('sximo/themes/dongho/css/captions.css')}}
+    {{ HTML::style('sximo/themes/dongho/css/settings.css')}}
+    {{ HTML::style('sximo/themes/dongho/css/magnific-popup.css')}}
+    {{ HTML::style('sximo/themes/dongho/css/slider.css')}}
+    <!--<link href="profiles/demot103web4svn/cache/custom.css" rel="stylesheet">-->
     <!-- Load jQuery Library -->
-    <script src="templates/t1-03/js/jquery-1.11.min.js"></script>
-    
-    <script src="templates/t1-03/js/owl.carousel.js"></script>
-    
-    
-    <script src="templates/t1-03/js/jquery.validate.js"></script>
-    <script src="templates/t1-03/js/bootstrap.min.js"></script>
+     {{ HTML::script('sximo/themes/dongho/js/jquery-1.11.min.js') }}
+    {{ HTML::script('sximo/themes/dongho/js/owl.carousel.js') }}
+    {{ HTML::script('sximo/themes/dongho/js/jquery.validate.js') }}
+    {{ HTML::script('sximo/themes/dongho/js/bootstrap.min.js') }}
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -287,8 +280,7 @@
                                   
                                   
                                 
-                              
-                                <script src="templates/t1-03/js/jquery.magnific-popup.min.js"></script>
+                              {{ HTML::script('sximo/themes/dongho/js/jquery.magnific-popup.min.js') }}
                                 <!--Don't move the js file above-->
 								<script>
                                 $(document).ready(function() {
@@ -460,40 +452,7 @@
 
 
 </div></div></div></section><section class="row-section top-menu " style='background:#d50133 !important;  '><div class="container">		<div class="hidden-sm hidden-xs">
-      <nav id="nav">
-        <ul class="nav navbar-nav default">
-                    		                	<li><a level='1' href="index.html" target="_self">Trang chủ</a></li>
-               	                    		                	<li><a level='1' href="gioi-thieu.html" target="_self">Giới thiệu</a></li>
-               	                    		                	<li class="dropdown"><a level='1' href="watch.html" target="_self" class="dropdown-toggle" data-toggle="">G Shock                  		
-                    </a>
-                    	<ul class="dropdown-menu">
-                        	                            	                                	<li class="dropdown-submenu"> <a tabindex="-1" href="for-men.html" target="_self">Clothing</a>
-                                    	<ul class="dropdown-menu">
-                                        	                                            	                                        			<li><a tabindex="-1" href="t-shirt.html" target="_self">T-shirt</a> </li>
-                                                                                                                                        	                                        			<li><a tabindex="-1" href="shirts.html" target="_self">Shirts</a> </li>
-                                                                                                                                        	                                        			<li><a tabindex="-1" href="vest.html" target="_self">Vest</a> </li>
-                                                                                                                                    </ul>
-                                    </li>
-                                                                                        	                            		<li><a href="underware.html" target="_self">Underware</a></li>
-                                                                                    </ul>
-                    	
-                    </li>
-                                    		                	<li class="dropdown"><a level='1' href="women.html" target="_self" class="dropdown-toggle" data-toggle="">G baby                  		
-                    </a>
-                    	<ul class="dropdown-menu">
-                        	                            	                            		<li><a href="t-shirt-shirt.html" target="_self">T-shirt &amp; Shirt</a></li>
-                                                                                        	                            		<li><a href="skirt-fashion-2014.html" target="_self">Skirt fashion 2014</a></li>
-                                                                                        	                            		<li><a href="jeans.html" target="_self">Jeans</a></li>
-                                                                                        	                            		<li><a href="lingerie.html" target="_self">Lingerie</a></li>
-                                                                                    </ul>
-                    	
-                    </li>
-                                    		                	<li><a level='1' href="skirt-fashion-2014.html" target="_self">Sản phẩm khuyến mại</a></li>
-               	                    		                	<li><a level='1' href="news.html" target="_self">Tin tức</a></li>
-               	                    		                	<li><a level='1' href="lien-he.html" target="_self">Liên hệ</a></li>
-               	                    
-        </ul>
-      </nav>
+       @include('layouts/dongho/topbar')
     </div>
     
 <script>
@@ -516,12 +475,12 @@
           <div class="carousel-inner">
                     	            	                    <div class="item active">
                     <a href="#">	
-                      <img src="profiles/demot103web4svn/uploads/attach/1414695379_gpsmainbanner1.jpg" alt="">
+                      <img src="{{ asset('sximo/themes/dongho/images/slider1.jpg')}}" alt="">
                     </a>
                     </div>
                                                         	                	<div class="item">
                 	<a href="#">
-	                  <img src="profiles/demot103web4svn/uploads/attach/1414695379_gw9400rangemanmainbanner.jpg" alt="">
+	                  <img src="{{ asset('sximo/themes/dongho/images/slider2.jpg')}}" alt="">
 	                </a>
 	                </div>	
                                                         

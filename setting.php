@@ -22,7 +22,7 @@ define('CNF_LANG','vi');
 define('CNF_REGIST','true');
 define('CNF_FRONT','true');
 define('CNF_RECAPTCHA','true');
-define('CNF_THEME','uber');
+define('CNF_THEME','dongho');
 define('CNF_RECAPTCHAPUBLICKEY','6LdecgMTAAAAAH-JYoi-WKeG_8yORz06zNIRs6oK');
 define('CNF_RECAPTCHAPRIVATEKEY','6LdecgMTAAAAAKry-V-Rg5vC8XvR1x3O9THn04hC');
 define('CNF_VAT','1');
