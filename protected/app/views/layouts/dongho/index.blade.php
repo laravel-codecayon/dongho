@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<title><?php echo isset($page['pageTitle']) ? $page['pageTitle'].' | '.$page['pageNote']. " | ". CNF_APPNAME : CNF_APPNAME ;?></title>
 <!-- Mirrored from demot103.web4s.vn/ by HTTrack Website Copier/3.x [XR&CO'2013], Thu, 12 Mar 2015 10:05:24 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
@@ -463,54 +463,9 @@
 	});	
 </script>
 
-</div></section><section class="row-section top-slideshow " style='  '><div class="container"><!-----Slider------>
-				
-	   
-        <div id="myCarousel_9858811426156503" class="carousel slide" data-ride="carousel">
-          <!-- Indicators -->
-          <ol class="carousel-indicators">
-                                          		<li data-target="#myCarousel_9858811426156503" data-slide-to="0" class="active"></li>
-                                                           	 <li data-target="#myCarousel_9858811426156503" data-slide-to="1"></li>
-                                             </ol>
-          <div class="carousel-inner">
-                    	            	                    <div class="item active">
-                    <a href="#">	
-                      <img src="{{ asset('sximo/themes/dongho/images/slider1.jpg')}}" alt="">
-                    </a>
-                    </div>
-                                                        	                	<div class="item">
-                	<a href="#">
-	                  <img src="{{ asset('sximo/themes/dongho/images/slider2.jpg')}}" alt="">
-	                </a>
-	                </div>	
-                                                        
-          </div>
-          <a class="left carousel-control" href="#myCarousel_9858811426156503" role="button" data-slide="prev"><i class="fa fa-caret-left"></i></a>
-          <a class="right carousel-control" href="#myCarousel_9858811426156503" role="button" data-slide="next"><i class="fa fa-caret-right"></i></a>
-        </div><!-- /.carousel -->
-	              
-	
-<script>
-	//script de chạy slide
-	$(document).ready(function() {
-	  var owl = $("#slide_9858811426156503");
-	  owl.owlCarousel({
-		  items : 6, 
-		  itemsDesktop : [1000,4], 
-		  itemsDesktopSmall : [900,3],
-		  itemsTablet: [600,2],
-		  itemsMobile : false
-	});
-	  // Custom Navigation Events
-	  $(".next_9858811426156503").click(function(){
-		owl.trigger('owl.next');
-	  })
-	  $(".prev_9858811426156503").click(function(){
-		owl.trigger('owl.prev');
-	  })		 
-	});
-	
-</script></div></section><section class="row-section top-html " style='  '><div class="container"><section class="clearfix" id="block-feature">
+</div></section>
+    @include('layouts/dongho/slidemenu')
+<section class="row-section top-html " style='  '><div class="container"><section class="clearfix" id="block-feature">
 <div class="line"> </div>
 
 <div class="row">

@@ -34,6 +34,18 @@
 						<td>{{ $row->slideshow_name }} </td>
 						
 					</tr>
+
+					<tr>
+						<td width='30%' class='label-view text-right'>{{ Lang::get('core.image') }}</td>
+						<td>
+							@if($row->slideshow_image != "")
+								<img width="400px" src="/uploads/slideshow/thumb/{{$row->slideshow_image}}">
+							@else
+								{{ Lang::get('core.no_image') }}
+							@endif
+						</td>
+						
+					</tr>
 				
 					<tr>
 						<td width='30%' class='label-view text-right'>{{ Lang::get('core.table_link') }}</td>

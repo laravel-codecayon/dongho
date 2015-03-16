@@ -47,6 +47,11 @@
 
 					</tr>
 					<tr>
+						<td width='30%' class='label-view text-right'>{{ Lang::get('core.table_image2') }}</td>
+						<td><img width="300px" src="/uploads/categories/thumb/{{ $row->Picture2 }}" /> </td>
+
+					</tr>
+					<tr>
 						<td width='30%' class='label-view text-right'>{{ Lang::get('core.table_status') }}</td>
 						<td>@if($row->status == 1) Enable @else Disable @endif </td>
 						

@@ -24,7 +24,6 @@ class Slideshow extends BaseModel  {
 	}
 	public static $rules=array(
 			"slideshow_name" => "required",
-			"slideshow_link" => "required",
 			"file" => "mimes:gif,png,jpg,jpeg|image|max:20000",
 		);
 

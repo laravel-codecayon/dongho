@@ -23,7 +23,10 @@
       </ul>
 	  	  
     </div>
- 
+ 	<input type="hidden" value="263" id="imgwidth" />
+ 	<input type="hidden" value="197" id="imgheight" />
+ 	<input type="hidden" value="349" id="imgwidth2" />
+ 	<input type="hidden" value="101" id="imgheight2" />
  	<div class="page-content-wrapper">
 	<div class="panel-default panel">
 		<div class="panel-body">
@@ -64,7 +67,21 @@
 									  <input id="upload" name="file" type="file" />
 									  <div id="result">
 											@if($row['Picture'] != "")
-												<img width="150px" src="/uploads/categories/thumb/{{$row['Picture']}}">
+												<img width="263px" src="/uploads/categories/thumb/{{$row['Picture']}}">
+											@endif
+										</div>
+									 </div> 
+									 <div class="col-md-2">
+									 	
+									 </div>
+								  </div>
+								  <div class="form-group  " >
+									<label for="Picture" class=" control-label col-md-4 text-left"> {{ Lang::get('core.category_image') }} </label>
+									<div class="col-md-6">
+									  <input id="upload2" name="file2" type="file" />
+									  <div id="result2">
+											@if($row['Picture2'] != "")
+												<img width="349px" src="/uploads/categories/thumb/{{$row['Picture2']}}">
 											@endif
 										</div>
 									 </div> 

@@ -194,6 +194,7 @@ return array(
 	"table_description"			=> "Mô tả ngắn",
 	"table_content"				=> "Mô tả",
 	"table_image"				=> "Ảnh đại diện",
+	"table_image2"				=> "Ảnh đại diện 2",
 	"table_type_promotion"		=> "Loại khuyến mãi",
 	"table_link"				=> "Link",
 	"table_url"					=> "URL",
@@ -251,4 +252,5 @@ return array(
 	"table_subject"				=> "Tiêu đề ",
 	"post_active"				=> "Kích hoạt ",
 	"config"					=> "Cài đặt ",
+	"no_image"					=> "Không có hình ",
 );

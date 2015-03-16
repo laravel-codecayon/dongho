@@ -172,7 +172,7 @@ class SlideshowController extends BaseController {
 				    $data['slideshow_image'] = $newfilename;
 				    $orgFile = $destinationPath.'/'.$newfilename;
 				    $thumbFile = $destinationPath.'/thumb/'.$newfilename;
-				    SiteHelpers::resizewidth("980",$orgFile,$thumbFile);
+				    SiteHelpers::resizewidth("1600",$orgFile,$thumbFile);
 				    if(Input::get('slideshow_id') != "")
 				    {
 				    	$data_old = $this->model->getRow(Input::get('slideshow_id'));
@@ -183,6 +183,7 @@ class SlideshowController extends BaseController {
 			}
 			$data['slideshow_alias'] =  SiteHelpers::seoUrl( trim($data['slideshow_name']));
 			$data['created'] = time();
+			$data['slideshow_link'] = $data['slideshow_link'] == '' ? '#' : $data['slideshow_link'];
 			$ID = $this->model->insertRow($data , Input::get('slideshow_id'));
 			// Input logs
 			if( Input::get('slideshow_id') =='')

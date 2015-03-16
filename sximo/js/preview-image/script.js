@@ -3,12 +3,13 @@ $(document).ready(function() {
 	/*****************************
 		Variables
 	*****************************/
-	var imgWidth = 180,
-		imgHeight = 180,
+	var imgWidth = ($("#imgwidth").length > 0) ? $("#imgwidth").val() : 180,
+		imgHeight = ($("#imgheight").length > 0) ? $("#imgheight").val() : 180,
 		zindex = 0;
 		dropzone = $('#droparea'),
 		uploadBtn = $('#uploadbtn'),
 		defaultUploadBtn = $('#upload');
+		defaultUploadBtn2 = $('#upload2');
 
 		btnmultiimage = $('#btnmultiimage');
 		defaultUploadBtn_multi = $('#uploadmt');
@@ -48,8 +49,19 @@ $(document).ready(function() {
 	});
 	defaultUploadBtn.on('change', function() {
 		//retrieve selected uploaded files data
+		imgWidth = ($("#imgwidth").length > 0) ? $("#imgwidth").val() : 180;
+		imgHeight = ($("#imgheight").length > 0) ? $("#imgheight").val() : 180;
 		var files = $(this)[0].files;
 		processFiles(files);
+		
+		return false;
+	});
+	defaultUploadBtn2.on('change', function() {
+		//retrieve selected uploaded files data
+		var files = $(this)[0].files;
+		imgWidth = ($("#imgwidth2").length > 0) ? $("#imgwidth2").val() : 180;
+		imgheight = ($("#imgheight2").length > 0) ? $("#imgheight2").val() : 180;
+		processFiles2(files);
 		
 		return false;
 	});
@@ -241,6 +253,17 @@ $(document).ready(function() {
 		}
 	}
 
+	var processFiles2 = function(files) {
+		if(files && typeof FileReader !== "undefined") {
+			//process each files only if browser is supported
+			for(var i=0; i<files.length; i++) {
+				readFile2(files[i]);
+			}
+		} else {
+			
+		}
+	}
+
 	var processFiles_multi = function(files) {
 		if(files && typeof FileReader !== "undefined") {
 			//process each files only if browser is supported
@@ -295,6 +318,33 @@ $(document).ready(function() {
 					//when image fully loaded
 					var newimageurl = getCanvasImage(this);
 					createPreview(file, newimageurl);
+					uploadToServer(file, dataURItoBlob(newimageurl));
+				})
+				.attr('src', e.target.result);	
+			};
+			
+			//begin reader read operation
+			reader.readAsDataURL(file);
+			
+			$('#err').text('');
+		} else {
+			//some message for wrong file format
+			$('#err').text('*Selected file format not supported!');
+		}
+	}
+
+	var readFile2 = function(file,count) {
+		if( (/image/i).test(file.type) ) {
+			//define FileReader object
+			var reader = new FileReader();
+			
+			//init reader onload event handlers
+			reader.onload = function(e) {	
+				var image = $('<img/>')
+				.load(function() {
+					//when image fully loaded
+					var newimageurl = getCanvasImage(this);
+					createPreview2(file, newimageurl,count);
 					uploadToServer(file, dataURItoBlob(newimageurl));
 				})
 				.attr('src', e.target.result);	
@@ -409,6 +459,42 @@ $(document).ready(function() {
 		//append new image through jQuery Template
 		var randvalue = Math.floor(Math.random()*31)-15;  //random number
 		var img = $("#imageTemplate_multi").tmpl(imageObj).prependTo("#results")
+		.hide()
+		/*.css({
+			'Transform': 'scale(1) rotate('+randvalue+'deg)',
+			'msTransform': 'scale(1) rotate('+randvalue+'deg)',
+			'MozTransform': 'scale(1) rotate('+randvalue+'deg)',
+			'webkitTransform': 'scale(1) rotate('+randvalue+'deg)',
+			'OTransform': 'scale(1) rotate('+randvalue+'deg)',
+			'z-index': zindex++
+		})*/
+		.show();
+		
+		if(isNaN(imageObj.fileUploadSize)) {
+			$('.imageholder span').last().hide();
+		}
+	}
+
+	var createPreview2 = function(file, newURL,count) {	
+		//populate jQuery Template binding object
+		var imageObj = {};
+		imageObj.count = count;
+		imageObj.filePath = newURL;
+		imageObj.fileName = file.name.substr(0, file.name.lastIndexOf('.')); //subtract file extension
+		imageObj.fileOriSize = convertToKBytes(file.size);
+		imageObj.fileUploadSize = convertToKBytes(dataURItoBlob(newURL).size); //convert new image URL to blob to get file.size
+					
+		//extend filename
+		var effect = $('input[name=effect]:checked').val();			
+		if(effect == 'grayscale') {
+			imageObj.fileName += " (Grayscale)";
+		} else if(effect == 'blurry') {
+			imageObj.fileName += " (Blurry)";
+		} 			
+		$("#result2").html('');
+		//append new image through jQuery Template
+		var randvalue = Math.floor(Math.random()*31)-15;  //random number
+		var img = $("#imageTemplate").tmpl(imageObj).prependTo("#result2")
 		.hide()
 		/*.css({
 			'Transform': 'scale(1) rotate('+randvalue+'deg)',

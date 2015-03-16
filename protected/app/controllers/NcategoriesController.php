@@ -39,6 +39,7 @@ class NcategoriesController extends BaseController {
 		// Filter Search for query		
 		$filter = (!is_null(Input::get('search')) ? $this->buildSearch() : '');
 		$filter .=  " AND lang = '$this->lang'";
+		$filter .=  " AND CategoryID != 14";
 		// End Filter Search for query 
 		
 		// Take param master detail if any
@@ -136,12 +137,14 @@ class NcategoriesController extends BaseController {
 	
 	function getShow( $id = null)
 	{
-	
 		if($this->access['is_detail'] ==0) 
 			return Redirect::to('')
 				->with('message', SiteHelpers::alert('error',Lang::get('core.note_restric')));
 					
 		$ids = (is_numeric($id) ? $id : SiteHelpers::encryptID($id,true)  );
+		if($ids == 14){
+			return Redirect::to('');
+		}
 		$row = $this->model->getRow($ids);
 		if($row)
 		{
@@ -168,19 +171,41 @@ class NcategoriesController extends BaseController {
 				$destinationPath = ROOT.'/uploads/categories/';
 				$filename = $file->getClientOriginalName();
 				$extension = $file->getClientOriginalExtension(); //if you need extension of the file
-				$newfilename = Input::get('CategoryName').'_'.time().'.'.$extension;
+				$newfilename = SiteHelpers::seoUrl( trim(Input::get('CategoryName'))).'_'.time().'.'.$extension;
 				$uploadSuccess = Input::file('file')->move($destinationPath, $newfilename);
 				if( $uploadSuccess ) {
 				    $data['Picture'] = $newfilename;
 				    $orgFile = $destinationPath.'/'.$newfilename;
 				    $thumbFile = $destinationPath.'/thumb/'.$newfilename;
 				    //SiteHelpers::cropImage($this->img_width , $this->img_height , $orgFile ,  $extension,	 $thumbFile);
-				    SiteHelpers::resizewidth("180",$orgFile,$thumbFile);
+				    SiteHelpers::resizewidth("263",$orgFile,$thumbFile);
 				    if(Input::get('action') != "")
 				    {
-				    	$data_old = $this->model->getRow(Input::get('action'));
+				    	$data_old = $this->model->getRow(Input::get('CategoryID'));
 				    	@unlink(ROOT .'/uploads/categories/'.$data_old->Picture);
 				    	@unlink(ROOT .'/uploads/categories/thumb/'.$data_old->Picture);
+				    }
+				}
+			}
+			if(!is_null(Input::file('file2')))
+			{
+				$file2 = Input::file('file2');
+				$destinationPath = ROOT.'/uploads/categories/';
+				$filename = $file2->getClientOriginalName();
+				$extension = $file2->getClientOriginalExtension(); //if you need extension of the file
+				$newfilename = SiteHelpers::seoUrl( trim(Input::get('CategoryName'))).'_large_'.time().'.'.$extension;
+				$uploadSuccess = Input::file('file2')->move($destinationPath, $newfilename);
+				if( $uploadSuccess ) {
+				    $data['Picture2'] = $newfilename;
+				    $orgFile = $destinationPath.'/'.$newfilename;
+				    $thumbFile = $destinationPath.'/thumb/'.$newfilename;
+				    //SiteHelpers::cropImage($this->img_width , $this->img_height , $orgFile ,  $extension,	 $thumbFile);
+				    SiteHelpers::resizewidth("698",$orgFile,$thumbFile);
+				    if(Input::get('action') != "")
+				    {
+				    	$data_old = $this->model->getRow(Input::get('CategoryID'));
+				    	@unlink(ROOT .'/uploads/categories/'.$data_old->Picture2);
+				    	@unlink(ROOT .'/uploads/categories/thumb/'.$data_old->Picture2);
 				    }
 				}
 			}
@@ -218,7 +243,19 @@ class NcategoriesController extends BaseController {
 			return Redirect::to('')
 				->with('message', SiteHelpers::alert('error',Lang::get('core.note_restric')));		
 		// delete multipe rows 
-		$this->model->destroy(Input::get('id'));
+		$array = Input::get('id');
+		foreach($array as $key=>$id){
+			if($id == 14){
+				unset($array[$key]);
+			}
+			$data = $this->model->getRow($id);
+			@unlink(ROOT .'/uploads/categories/'.$data->Picture);
+			@unlink(ROOT .'/uploads/categories/thumb/'.$data->Picture);
+			@unlink(ROOT .'/uploads/categories/'.$data->Picture2);
+			@unlink(ROOT .'/uploads/categories/thumb/'.$data->Picture2);
+			DB::table('products')->where('CategoryID','=',$id)->update(array('CategoryID'=>14));
+		}
+		$this->model->destroy($array);
 		$this->inputLogs("ID : ".implode(",",Input::get('id'))."  , Has Been Removed Successfull");
 		// redirect
 		Session::flash('message', SiteHelpers::alert('success',Lang::get('core.note_success_delete')));
