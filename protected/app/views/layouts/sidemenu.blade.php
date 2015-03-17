@@ -78,7 +78,13 @@
 		<li @if(Request::is('ncategories')) class="active" @endif>
 			<a href="{{ URL::to('ncategories')}}"><i class="icon-drawer3"></i> <span class="nav-label">Danh mục sản phẩm</span><span class="fa arrow"></span></a>
 		</li>
-		<li @if(Request::is('customer')) class="active" @endif>
+		<li @if(Request::is('producttype')) class="active" @endif>
+			<a href="{{ URL::to('producttype')}}"><i class="icon-drawer3"></i> <span class="nav-label">{{ Lang::get('core.type_product') }}</span><span class="fa arrow"></span></a>
+		</li>
+		<li @if(Request::is('promotion')) class="active" @endif>
+			<a href="{{ URL::to('promotion')}}"><i class="icon-drawer3"></i> <span class="nav-label">Khuyến mãi</span><span class="fa arrow"></span></a>
+		</li>
+		<!--<li @if(Request::is('customer')) class="active" @endif>
 			<a href="{{ URL::to('customer')}}"><i class="icon-drawer3"></i> <span class="nav-label">Khách hàng</span><span class="fa arrow"></span></a>
 		</li>
 		<li @if(Request::is('post')) class="active" @endif>
@@ -86,7 +92,7 @@
 		</li>
         <li @if(Request::is('advertise')) class="active" @endif>
 			<a href="{{ URL::to('advertise')}}"><i class="icon-drawer2"></i> <span class="nav-label">Quảng cáo</span><span class="fa arrow"></span></a>
-		</li>
+		</li>-->
 		<li @if(Request::is('pages')) class="active" @endif>
 			<a href="{{ URL::to('pages')}}"><i class="icon-drawer2"></i> <span class="nav-label">{{ Lang::get('core.pages') }}</span><span class="fa arrow"></span></a>
 		</li>

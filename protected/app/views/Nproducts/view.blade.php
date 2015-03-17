@@ -40,6 +40,12 @@
 						<td><img src="/uploads/products/thumb/{{ $row->image }}" /> </td>
 						
 					</tr>
+
+					<tr>
+						<td width='30%' class='label-view text-right'>{{ Lang::get('core.product_image') }} 2 </td>
+						<td><img src="/uploads/products/thumb/{{ $row->image2 }}" /> </td>
+						
+					</tr>
 				
 					<tr>
 						<td width='30%' class='label-view text-right'>{{ Lang::get('core.table_promotion') }} </td>
@@ -50,6 +56,16 @@
 					<tr>
 						<td width='30%' class='label-view text-right'>{{ Lang::get('core.table_category') }} </td>
 						<td>{{ SiteHelpers::transNameOfId("categories",$row->CategoryID,"CategoryID","CategoryName") }} </td>
+						
+					</tr>
+					<tr>
+						<td width='30%' class='label-view text-right'>{{ Lang::get('core.table_type') }} </td>
+						<td>{{ SiteHelpers::transNameOfId("product_type",$row->type_id,"type_id","type_name") }} </td>
+						
+					</tr>
+					<tr>
+						<td width='30%' class='label-view text-right'>{{ Lang::get('core.table_sex') }} </td>
+						<td>@if($row->status == 1) {{ Lang::get('core.man') }}  @else {{ Lang::get('core.woman') }}  @endif </td>
 						
 					</tr>
 					<tr>

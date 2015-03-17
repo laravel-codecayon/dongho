@@ -48,21 +48,19 @@ include('pageroutes.php');
 Route::group(array('before' => 'auth'), function() 
 {
 	/* CORE APPLICATION DONT DELETE IT */
-	Route::controller('customer', 'CustomerController');
+	//Route::controller('customer', 'CustomerController');
 	Route::controller('pages', 'PagesController');
-	Route::controller('users', 'UsersController');
-	Route::controller('groups', 'GroupsController');
 	Route::controller('menu', 'MenuController');
 	Route::controller('dashboard', 'DashboardController');
 	if(Session::get('gid') == '1'  || Session::get('gid') == '2')
 	{
 		Route::controller('module', 'ModuleController');
 		Route::controller('config', 'ConfigController');
-	}
-	if(Session::get('gid') == '1' || Session::get('gid') == '2'){
+		Route::controller('users', 'UsersController');
+		Route::controller('groups', 'GroupsController');
 		Route::controller('permission', 'PermissionController');
+		Route::controller('logs', 'LogsController');
 	}
-	Route::controller('logs', 'LogsController');
 	Route::controller('blogadmin', 'BlogadminController');
 	Route::controller('blogcategories', 'BlogcategoriesController');
 	Route::controller('blogcomment', 'BlogcommentController');
@@ -70,6 +68,9 @@ Route::group(array('before' => 'auth'), function()
 	Route::controller('Nproducts', 'NproductsController');
 	Route::controller('ncategories', 'NcategoriesController');
 	Route::controller('Ncategories', 'NcategoriesController');
+	Route::controller('promotion', 'PromotionController');
+	Route::controller('producttype', 'ProducttypeController');
+	Route::controller('News', 'NewsController');
 	Route::get('upload-image.html', 'NproductsController@uploadimage');
 	/* END CORE APPLICATION  */
 	

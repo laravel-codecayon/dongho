@@ -173,7 +173,8 @@ return array(
 	"last_login"				=> "Đăng nhập gần nhất",
 	"product"					=> "Sản phẩm",
 	"promotion"					=> "Khuyến mãi",
-	"slideshow"					=> "Slide Show",
+	"Slideshow"					=> "Slide Show",
+	"type_product"				=> "Loại sản phẩm",
 	"pages"						=> "Trang",
 	"order"						=> "Đơn hàng",
 	"permission"				=> "Phân quyền",
@@ -211,6 +212,9 @@ return array(
 	"table_note"				=> "Ghi chú",
 	"table_sl"					=> "Số lượng",
 	"table_username"			=> "Username",
+	"table_type"				=> "Loại",
+	"table_sex"					=> "Giới tính",
+	"table_position"			=> "Vị trí",
 
 
 	"order_new"					=> "Mới",

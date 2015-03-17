@@ -255,7 +255,7 @@ class NproductsController extends BaseController {
 				$destinationPath = './uploads/products/';
 				$filename = $file->getClientOriginalName();
 				$extension = $file->getClientOriginalExtension(); //if you need extension of the file
-				$newfilename = Input::get('ProductName').'_'.time().'.'.$extension;
+				$newfilename = SiteHelpers::seoUrl( trim($data['ProductName'])).'_'.time().'.'.$extension;
 				$uploadSuccess = Input::file('file')->move($destinationPath, $newfilename);
 				if( $uploadSuccess ) {
 				    $data['image'] = $newfilename;
@@ -265,8 +265,30 @@ class NproductsController extends BaseController {
 				    if(Input::get('action') != "")
 				    {
 				    	$data_old = $this->model->getRow(Input::get('action'));
-				    	@unlink(ROOT .'/uploads/products/'.$data_old->Picture);
-				    	@unlink(ROOT .'/uploads/products/thumb/'.$data_old->Picture);
+				    	@unlink(ROOT .'/uploads/products/'.$data_old->image);
+				    	@unlink(ROOT .'/uploads/products/thumb/'.$data_old->image);
+				    }
+				}
+			}
+
+			if(!is_null(Input::file('file2')))
+			{
+				$file2 = Input::file('file2');
+				$destinationPath = './uploads/products/';
+				$filename = $file2->getClientOriginalName();
+				$extension = $file2->getClientOriginalExtension(); //if you need extension of the file
+				$newfilename = SiteHelpers::seoUrl( trim($data['ProductName'])).'_large_'.time().'.'.$extension;
+				$uploadSuccess = Input::file('file2')->move($destinationPath, $newfilename);
+				if( $uploadSuccess ) {
+				    $data['image2'] = $newfilename;
+				    $orgFile = $destinationPath.'/'.$newfilename;
+				    $thumbFile = $destinationPath.'/thumb/'.$newfilename;
+				    SiteHelpers::resizewidth("213",$orgFile,$thumbFile);
+				    if(Input::get('action') != "")
+				    {
+				    	$data_old = $this->model->getRow(Input::get('action'));
+				    	@unlink(ROOT .'/uploads/products/'.$data_old->image2);
+				    	@unlink(ROOT .'/uploads/products/thumb/'.$data_old->image2);
 				    }
 				}
 			}
@@ -278,7 +300,7 @@ class NproductsController extends BaseController {
 			$data['created'] =  time();
 			
 			$ID = $this->model->insertRow($data , Input::get('ProductID'));
-			if(Input::file('multi_file')[0] != "")
+			/*if(Input::file('multi_file')[0] != "")
 			{
 				$model_img_pro = new Imagesproduct();
 				$rm_image = Input::get('remove_image');
@@ -299,7 +321,7 @@ class NproductsController extends BaseController {
 					    }
 					}
 				}
-			}
+			}*/
 
 			// Input logs
 			if( Input::get('ProductID') =='')
@@ -334,6 +356,8 @@ class NproductsController extends BaseController {
 			$images = DB::table('images_product')->where('id_product',$idpro)->get();
 			@unlink(ROOT .'/uploads/products/'.$data_pro->image);
 			@unlink(ROOT .'/uploads/products/thumb/'.$data_pro->image);
+			@unlink(ROOT .'/uploads/products/'.$data_pro->image2);
+			@unlink(ROOT .'/uploads/products/thumb/'.$data_pro->image2);
 			foreach($images as $image){
 				@unlink(ROOT .'/uploads/images_product/'.$image->name);
 				@unlink(ROOT .'/uploads/images_product/thumb/'.$image->name);
@@ -341,7 +365,7 @@ class NproductsController extends BaseController {
 			
 			$images = DB::table('images_product')->where('id_product',$idpro)->delete();
 		}
-
+		$this->model->destroy(Input::get('id'));
 		// redirect
 		Session::flash('message', SiteHelpers::alert('success',Lang::get('core.note_success_delete')));
 		return Redirect::to('Nproducts?md='.Input::get('md'));

@@ -25,7 +25,8 @@
       </ul>
 	  	  
     </div>
- 
+ 	<input type="hidden" value="213" id="imgwidth" />
+ 	<input type="hidden" value="142" id="imgheight" />
  	<div class="page-content-wrapper">
 	<div class="panel-default panel">
 		<div class="panel-body">
@@ -59,7 +60,7 @@
 									  <input id="upload" name="file" type="file" />
 									  	<div id="result">
 											@if($row['news_picture'] != "")
-												<img width="150px" src="/uploads/news/thumb/{{$row['news_picture']}}">
+												<img width="213px" src="/uploads/news/thumb/{{$row['news_picture']}}">
 											@endif
 										</div>
 									 </div> 

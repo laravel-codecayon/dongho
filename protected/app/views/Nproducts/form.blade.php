@@ -40,7 +40,10 @@
       </ul>
 
     </div>
-
+	<input type="hidden" value="152" id="imgwidth" />
+ 	<input type="hidden" value="288" id="imgheight" />
+ 	<input type="hidden" value="213" id="imgwidth2" />
+ 	<input type="hidden" value="159" id="imgheight2" />
  	<div class="page-content-wrapper">
 	<div class="panel-default panel">
 		<div class="panel-body">
@@ -72,6 +75,20 @@
 									 </div>
 								  </div>
 								  <div class="form-group  " >
+									<label for="Picture" class=" control-label col-md-4 text-left"> {{ Lang::get('core.product_image') }} 2 </label>
+									<div class="col-md-6">
+									  <input id="upload2" name="file2" type="file" />
+									  <div id="result2">
+											@if($row['image2'] != "")
+												<img width="213px" src="/uploads/products/thumb/{{$row['image2']}}">
+											@endif
+										</div>
+									 </div> 
+									 <div class="col-md-2">
+									 	
+									 </div>
+								  </div>
+								  <!--<div class="form-group  " >
 									<label for="Picture" class=" control-label col-md-4 text-left"> {{ Lang::get('core.product_image_multi') }} </label>
 									<div class="col-md-6">
 										<span class="label label-primary" style="cursor:pointer" id="btnmultiimage">Choose images</span>
@@ -95,7 +112,7 @@
 									 </div> 
 									 <div class="col-md-2">
 									 </div>
-								  </div>
+								  </div>-->
 								  <div class="form-group  " >
 									<label for="ProductName" class=" control-label col-md-4 text-left"> {{ Lang::get('core.table_name') }} </label>
 									<div class="col-md-6">
@@ -123,7 +140,37 @@
 									 <div class="col-md-2">
 									 	
 									 </div>
+									</div>
+									<div class="form-group  " >
+									<label for="Picture" class=" control-label col-md-4 text-left"> {{ Lang::get('core.table_position') }} </label>
+									<div class="col-md-6">
+									  {{ Form::text('position', $row['position'],array('class'=>'form-control', 'placeholder'=>'',   )) }} 
+									 </div> 
+									 <div class="col-md-2">
+									 </div>
+								  </div>
+									 <div class="form-group  " >
+									<label for="type_id" class=" control-label col-md-4 text-left"> {{ Lang::get('core.table_type') }} </label>
+									<div class="col-md-6">
+									  <select name='type_id' rows='5' id='type_id' code='{$type_id}' 
+							class='select2 '    ></select> 
+									 </div> 
+									 <div class="col-md-2">
+									 	
+									 </div>
 								  </div> 					
+								  <div class="form-group  " >
+									<label for="Status" class=" control-label col-md-4 text-left"> {{ Lang::get('core.table_sex') }} </label>
+									<div class="col-md-6">
+									  <label class='checked'>
+										<input type='radio' name='sex' value ='0' required @if($row['sex'] == '0' || $row['sex'] == '') checked="checked" @endif > {{ Lang::get('core.woman') }} </label>
+										<label class='checked'>
+										<input type='radio' name='sex' value ='1' required @if($row['sex'] == '1') checked="checked" @endif > {{ Lang::get('core.man') }} </label> 
+									 </div> 
+									 <div class="col-md-2">
+									 	
+									 </div>
+								  </div>
 								  <div class="form-group  " >
 									<label for="UnitPrice" class=" control-label col-md-4 text-left"> {{ Lang::get('core.table_price') }} </label>
 									<div class="col-md-6">
@@ -214,6 +261,8 @@
 		$("#CategoryID").jCombo("{{ URL::to('Nproducts/comboselect?filter=categories:CategoryID:CategoryName') }}",
 		{  selected_value : '{{ $row["CategoryID"] }}' });
 		 
+		 $("#type_id").jCombo("{{ URL::to('Nproducts/comboselect?filter=product_type:type_id:type_name') }}",
+		{  selected_value : '{{ $row["type_id"] }}' });
 
 
 		$(function(){
