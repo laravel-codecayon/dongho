@@ -26,6 +26,9 @@ return array(
 	"personalinfo"	=> "Thông tin cá nhân",
 	"changepassword"	=> "Đổi Password",
 	"registernew" => "Tạo tài khoảng mới ",
+	"yes" 			=> "Có",	
+	"no" 			=> "Không",	
+	"hot" 			=> "Hot",	
 	
 /* grid , pagination */
 	"grid_displaying" 	=> "Displaying",

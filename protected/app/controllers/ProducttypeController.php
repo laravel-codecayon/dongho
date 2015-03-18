@@ -177,10 +177,10 @@ class ProducttypeController extends BaseController {
 			}
 			// Redirect after save	
 			$md = str_replace(" ","+",Input::get('md'));
-			$redirect = (!is_null(Input::get('apply')) ? 'producttype/add/'.$id.'?md='.$md.$trackUri :  'producttype?md='.$md.$trackUri );
+			$redirect = (!is_null(Input::get('apply')) ? 'producttype/add/'.$id.'?md=' :  'producttype?md=' );
 			return Redirect::to($redirect)->with('message', SiteHelpers::alert('success',Lang::get('core.note_success')));
 		} else {
-			return Redirect::to('producttype/add/'.$id.'?md='.$md)->with('message', SiteHelpers::alert('error',Lang::get('core.note_error')))
+			return Redirect::to('producttype/add/'.$id.'?md=')->with('message', SiteHelpers::alert('error',Lang::get('core.note_error')))
 			->withErrors($validator)->withInput();
 		}	
 	
@@ -197,7 +197,7 @@ class ProducttypeController extends BaseController {
 		$this->inputLogs("ID : ".implode(",",Input::get('id'))."  , Has Been Removed Successfull");
 		// redirect
 		Session::flash('message', SiteHelpers::alert('success',Lang::get('core.note_success_delete')));
-		return Redirect::to('producttype?md='.Input::get('md'));
+		return Redirect::to('producttype?md=');
 	}			
 		
 }

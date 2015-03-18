@@ -1,6 +1,7 @@
 <?php
 class SiteHelpers
 {
+
 	public static function menus( $position ='top',$active = '1')
 	{
 		$data = array();  
@@ -106,6 +107,36 @@ class SiteHelpers
 		return Slideshow::where('slideshow_status','=','1')->get();
 	}
 
+	public static function getProductHot(){
+		$lang = Session::get('lang') == '' ? CNF_LANG : Session::get('lang');
+		return Nproducts::where('status','=','1')->where('lang','=',$lang)->where('is_hot','=','1')->orderBy('created','desc')->limit(4)->get();
+	}
+
+	public static function getMenuCategories(){
+		$lang = Session::get('lang') == '' ? CNF_LANG : Session::get('lang');
+		return Ncategories::where('status','=','1')->where('lang','=',$lang)->orderBy('CategoryName','asc')->get();
+	}
+
+	public static function getMenuProductSale(){
+		$lang = Session::get('lang') == '' ? CNF_LANG : Session::get('lang');
+		$pro = Promotion::where('status','=','1')->orderBy('created','desc')->limit(1)->first();
+		if(count($pro) <= 0){
+			return false;
+		}
+		return Nproducts::where('status','=','1')->where('lang','=',$lang)->where('id_promotion','=',$pro->id_promotion)->orderBy('created','desc')->get();
+	}
+
+	public static function getProductMain($type = 0){
+		$lang = Session::get('lang') == '' ? CNF_LANG : Session::get('lang');
+		if($type == 0){
+			$pro = Nproducts::where('status','=','1')->where('lang','=',$lang)->where('is_hot','!=','1')->orderBy('position','desc')->limit(12)->get();
+		}else{
+			$pro = Nproducts::where('status','=','1')->where('lang','=',$lang)->where('is_hot','!=','1')->orderBy('position','desc')->limit(12)->get();
+		}
+
+		return $pro;
+	}
+
 	public static function listposthome($type = 0){
 		$post = DB::table('post')->where('status','=','1')->where('active','=','1')->where('post_typecustomer','=',$type)->orderBy('post_id','desc')->limit(10)->get();
 		return $post;
@@ -157,24 +188,78 @@ class SiteHelpers
 		return $sex == 1 ? "Nam" : "Nu";
 	}
 
-	public static function templatePost($data = "",$type = 0)
+	public static function templateProduct($data = "")
 	{
-		$image = $data->post_typecustomer == '1' ?  asset('sximo/themes/uber/image/guest-icon.png') : asset('sximo/themes/uber/image/driver-icon.png');
-		$link = URL::to('')."/tin/".$data->post_slug."-".$data->post_id.".html";
-		$output = '';
-		$output .= '<li>';
-		$output .= '<a href="'.$link.'">';
-	    $output .= '<img src="'.$image.'">';
-	    $output .=  '<div class="title">'.$data->post_subject.'</div>';
-	    $output .=  '<div class="trip">';
-	    $output .=  '<span class="start-place">Nơi đi : <b>'.self::getNameaddress($data->post_districtfrom,'district','districtid').', '.self::getNameaddress($data->post_provincefrom,'province','provinceid').'</b></span>';
-	    $output .=  '<span class="end-place">Nơi đến : <b>'.self::getNameaddress($data->post_districtto,'district','districtid').', '.self::getNameaddress($data->post_provinceto,'province','provinceid').'</b></span>';
-	    if($type == 0){
-	    	$output .=  '<span class="start-date">Ngày xuất phát : <b>'.date('d-m-Y',$data->post_datestar).'</b></span>';
-	    }
-	    $output .=  '</div>';
-	    $output .=  '</a>';
-        $output .=  '</li>';
+		$link = URL::to('')."/chi-tiet/".$data->slug."-".$data->ProductID.".html";
+		$image = URL::to('')."/uploads/products/thumb/".$data->image;
+		if($data->id_promotion == 0)
+		{
+			$html_promotion = '';
+			$price = '<span class="price-new">'.number_format($data->UnitPrice,0,',','.') . 'đ</span>';
+		}
+		else
+		{
+			$promotion = DB::table('promotion')->where('status','=',1)->where('id_promotion','=',$data->id_promotion)->first();
+			$html_promotion = '<span class="product-label-special-right label">-'.$promotion->promotion .'</span>';
+			if(count($promotion) >= 1){
+				$pri = $promotion->type == 1 ? $data->UnitPrice - $promotion->promotion : $data->UnitPrice - ($data->UnitPrice * $promotion->promotion/100);
+				$price = '<span class="price-old">'.number_format($data->UnitPrice,0,',','.') . 'đ</span><br/>';
+				$price .= '<span class="price-new">'.number_format($pri,0,',','.') . 'đ</span>';
+			}
+			else{
+				$price = '<span class="price-new">'.number_format($data->UnitPrice,0,',','.') . 'đ</span>';
+			}
+		}
+		$output = '<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 col94 mg">
+                            <!--item -->
+                            <div class="product">
+                              <div class="image">
+                                <div class="img-overflow"> 
+                                    <a href="'.$link.'" title="'.$data->ProductName.'">
+                                    <img src="'.$image.'" alt="'.$data->ProductName.'">                   
+                                    </a> 
+                                </div>
+
+                                <!--span class="product-label-special-left label">NEW</span-->
+                                                                '.$html_promotion.'
+
+                                <a href="'.$link.'" title="'.$data->ProductName.'">
+                                <h3>'.$data->ProductName.'</h3>
+                                </a>
+                                <p>'.$data->description.'</p>
+                              </div>
+                              <div class="price"> 
+                                        '.$price.'
+                                                                                                  </div>
+                              <ul class="function">
+                                                                                                            <li>
+                                       <a href="http://demot103.web4s.vn/?site=cart&amp;act=order&amp;sub=update_cart&amp;item=137&amp;key=addfmodule" title="Mua sản phẩm này">
+                                            <button type="button" class="btn btnitem">
+                                                <i class="fa fa-shopping-cart"></i>
+                                            </button>
+                                        </a>
+                                    </li>
+                                                                                                                                                <li>
+                                       <a href="http://demot103.web4s.vn/?site=wishlist&amp;act=add&amp;id=137" title="">
+                                            <button type="button" class="btn btnitem">
+                                                <i class="fa fa-heart"></i>
+                                            </button>
+                                        </a>
+                                    </li>
+                                                                                                            <li>
+                                       <a href="http://demot103.web4s.vn/?site=compare&amp;act=add&amp;id=137" title="">
+                                            <button type="button" class="btn btnitem">
+                                                <i class="fa fa-exchange"></i>
+                                            </button>
+                                        </a>
+                                    </li>
+                                                                    </ul>
+                            </div>
+
+                            <!--item -->
+
+                </div>';
+		
         return $output;
 	}
 
@@ -784,7 +869,7 @@ public static function alphaID($in, $to_num = false, $pad_up = false, $passKey =
 
 	public static function transNameOfId($model, $id, $key, $value){
 		$data = DB::table($model)->where("$key",'=', $id)->get();
-		return $data[0]->$value;
+		return count($data) >= 1 ? $data[0]->$value : '';
 	}
 
 	public static function transSelect($field,$data){

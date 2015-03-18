@@ -84,6 +84,9 @@
 		<li @if(Request::is('promotion')) class="active" @endif>
 			<a href="{{ URL::to('promotion')}}"><i class="icon-drawer3"></i> <span class="nav-label">Khuyến mãi</span><span class="fa arrow"></span></a>
 		</li>
+		<li @if(Request::is('News')) class="active" @endif>
+			<a href="{{ URL::to('News')}}"><i class="icon-drawer3"></i> <span class="nav-label">Tin tức</span><span class="fa arrow"></span></a>
+		</li>
 		<!--<li @if(Request::is('customer')) class="active" @endif>
 			<a href="{{ URL::to('customer')}}"><i class="icon-drawer3"></i> <span class="nav-label">Khách hàng</span><span class="fa arrow"></span></a>
 		</li>

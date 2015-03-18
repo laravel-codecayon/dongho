@@ -261,12 +261,15 @@ class NproductsController extends BaseController {
 				    $data['image'] = $newfilename;
 				    $orgFile = $destinationPath.'/'.$newfilename;
 				    $thumbFile = $destinationPath.'/thumb/'.$newfilename;
-				    SiteHelpers::resizewidth("152",$orgFile,$thumbFile);
+				    $thumbFile2 = $destinationPath.'/thumb/second_'.$newfilename;
+				    SiteHelpers::cropImage('152' , '228' , $orgFile ,  $extension,	 $thumbFile);
+				    SiteHelpers::cropImage('213' , '320' , $orgFile ,  $extension,	 $thumbFile2);
 				    if(Input::get('action') != "")
 				    {
 				    	$data_old = $this->model->getRow(Input::get('action'));
 				    	@unlink(ROOT .'/uploads/products/'.$data_old->image);
 				    	@unlink(ROOT .'/uploads/products/thumb/'.$data_old->image);
+				    	@unlink(ROOT .'/uploads/products/thumb/second_'.$data_old->image);
 				    }
 				}
 			}
@@ -283,7 +286,8 @@ class NproductsController extends BaseController {
 				    $data['image2'] = $newfilename;
 				    $orgFile = $destinationPath.'/'.$newfilename;
 				    $thumbFile = $destinationPath.'/thumb/'.$newfilename;
-				    SiteHelpers::resizewidth("213",$orgFile,$thumbFile);
+				    //SiteHelpers::resizewidth("213",$orgFile,$thumbFile);
+				    SiteHelpers::cropImage('213' , '231' , $orgFile ,  $extension,	 $thumbFile);
 				    if(Input::get('action') != "")
 				    {
 				    	$data_old = $this->model->getRow(Input::get('action'));

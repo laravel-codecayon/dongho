@@ -49,7 +49,7 @@
 				
 					<tr>
 						<td width='30%' class='label-view text-right'>{{ Lang::get('core.table_promotion') }} </td>
-						<td>{{ SiteHelpers::transNameOfId("suppliers",$row->SupplierID,"SupplierID","CompanyName") }} </td>
+						<td>{{ SiteHelpers::transNameOfId("promotion",$row->id_promotion,"id_promotion","name") }} </td>
 						
 					</tr>
 				

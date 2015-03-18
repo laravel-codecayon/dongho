@@ -47,7 +47,7 @@
 			</div>
 		</div> </section>	
 
-	
+	@endif
 	<div class="row m-t">
 		<div class="col-md-12">
 			<div class="sbox">
@@ -107,6 +107,5 @@
 			responsive: true
 		});
 	}
-	@endif
 </script>	
 

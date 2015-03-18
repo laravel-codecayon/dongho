@@ -136,7 +136,7 @@
 								@if($row['module']== $page->alias ) selected="selected" @endif
 								>Page : {{ $page->title}}</option>
 							@endforeach	
-							</optgroup>						
+							</optgroup>
 					</select> 		
 					 </div> 
 				  </div> 										

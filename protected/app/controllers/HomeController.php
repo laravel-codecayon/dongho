@@ -49,6 +49,7 @@ class HomeController extends BaseController {
 				'provinceid'	=>'79',
 				'districtid'	=>'',
 				'wardid'	=>'',
+				'birthday'	=>'',
 			);
 		if(Session::has('input_rd')){
 			$input = Session::get('input_rd');

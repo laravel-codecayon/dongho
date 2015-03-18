@@ -219,6 +219,18 @@
 									 <div class="col-md-2">
 									 	
 									 </div>
+								  </div>
+								  <div class="form-group  " >
+									<label for="Status" class=" control-label col-md-4 text-left"> {{ Lang::get('core.hot') }} </label>
+									<div class="col-md-6">
+									  <label class='checked'>
+										<input type='radio' name='is_hot' value ='0' required @if($row['is_hot'] == '0' || $row['is_hot'] == '') checked="checked" @endif > {{ Lang::get('core.no') }} </label>
+										<label class='checked'>
+										<input type='radio' name='is_hot' value ='1' required @if($row['is_hot'] == '1') checked="checked" @endif > {{ Lang::get('core.yes') }} </label> 
+									 </div> 
+									 <div class="col-md-2">
+									 	
+									 </div>
 								  </div> </fieldset>
 			</div>
 			

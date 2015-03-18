@@ -1,64 +1,240 @@
-{{--*/ $guest = SiteHelpers::listposthome(1) /*--}}
-{{--*/ $driver = SiteHelpers::listposthome(0) /*--}}
-<div class="container">
-          <div class="box home-list clearfix">
-              <div class="thread-list guest">
-                  <div class="box-heading"><span>Hành khách</span></div>
-                  <ul>
-
-                  @foreach($guest as $item)
-                        {{ SiteHelpers::templatePost($item,1) }}
-                    @endforeach
-                    <li class="more">Và còn hàng ngàn hành khách khác ... <a href="{{URL::to('hanh-khach.html')}}">Xem tất cả hành khách</a></li>
-                    </ul>
-                </div><!-- guest-list -->
-                <div class="thread-list driver">
-                  <div class="box-heading"><span>Tài xế</span></div>
-                  <ul>
-                  @foreach($driver as $item)
-                        {{ SiteHelpers::templatePost($item,1) }}
-                    @endforeach
-                    <li class="more">Và còn hàng ngàn tài xế khác ... <a href="{{URL::to('tai-xe.html')}}">Xem tất cả tài xế</a></li>
-                    </ul>
-                </div><!-- driver-list -->
-            </div><!-- home-list -->
-            {{--*/ $advertise = SiteHelpers::getAdvertise(0) /*--}}
-            @if(count($advertise) >0)
-            	<div class="box home-ads row clearfix">
-                	@foreach($advertise as $ads)
-                    	<div><a href="{{$ads->advertise_link}}"><img src="{{URL::to('')}}/uploads/advertise/thumb/{{$ads->image}}"></a></div>
-                    @endforeach
-                </div><!-- home-ads -->
-            @endif
-            
-            <!--<div class="box home-links carousel clearfix">
-              <div class="box-heading"><span>Liên kết</span></div>
-                <ul class="row">
-                  <li><a href="#"><img src="images/lienket.jpg"></a></li>
-                    <li><a href="#"><img src="images/lienket.jpg"></a></li>
-                    <li><a href="#"><img src="images/lienket.jpg"></a></li>
-                    <li><a href="#"><img src="images/lienket.jpg"></a></li>
-                    <li><a href="#"><img src="images/lienket.jpg"></a></li>
-                    <li><a href="#"><img src="images/lienket.jpg"></a></li>
-                    <li><a href="#"><img src="images/lienket.jpg"></a></li>
-                    <li><a href="#"><img src="images/lienket.jpg"></a></li>
-                </ul>
-                <a id="prev" class="prev" href="#">&lt;</a>
-                <a id="next" class="next" href="#">&gt;</a>
-                <div id="pager" class="pager"></div>
-
-            </div>-->
-      <script>
-            $(document).ready(function() {
-             
-                $('.home-links .row').carouFredSel({
-                    prev: '#prev',
-                    next: '#next',
-                    pagination: "#pager",
-                    scroll: 1000
-                });
-                
-            });
-            </script>
-
-        </div><!-- container -->
+{{--*/ $pro1 = SiteHelpers::getProductMain(0); /*--}}
+<section class="row_section" style='  '><div class="container"><div class="row"><div class="col-lg-9 col-md-9 col-sm-12 col-xs-12"><div class="row"><div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><!--$css_item,$box_width,$position,$num_item_row -->
+    
+    <section id="product-listitem" class="clearfix">
+    <div class="listitem box_9">
+    
+                <h2><span>Sản phẩm nổi bật</span>
+                </h2>
+                <div class="row">
+                    <!-- Item 1-->
+                        @foreach($pro1 as $item)
+                            <?php echo SiteHelpers::templateProduct($item); ?>
+                        @endforeach
+        </div>
+               
+</section>
+    </div></div><div class="row"><div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"><!--$css_item,$box_width,$position,$num_item_row -->
+    
+    <section id="product-listitem" class="clearfix">
+    <div class="listitem box_9">
+    
+                <h2><span>Shoes</span>
+                    <a href="http://demot103.web4s.vn/shoes" title="Xem tất cả" class="all"><i class="fa fa-arrow-circle-o-right"></i>Xem tất cả</a>
+                </h2>
+                <div class="row">
+                    <!-- Item 1-->
+                                                                                                
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 col94 mg">
+        
+                            <!--item -->
+                            <div class="product">
+                              <div class="image">
+                                <div class="img-overflow"> 
+                                    <a href="http://demot103.web4s.vn/g-shock-gwx5600c" title="G-SHOCK GWX5600C">
+                                    <img src="http://demot103.web4s.vn/image.php?width=0&amp;height=0&amp;cropratio=&amp;image=http://demot103.web4s.vn/profiles/demot103web4svn/uploads/attach/1414697207_untitled1.jpg" alt="">                   
+                                    </a> 
+                                </div>
+                                
+                                <!--span class="product-label-special-left label">NEW</span-->
+                                                                
+                                <a href="http://demot103.web4s.vn/g-shock-gwx5600c" title="G-SHOCK GWX5600C">
+                                <h3>G-SHOCK GWX5600C</h3>
+                                </a>
+                                <p>Placerat dui sit amet sapien euismod porttitor. Nulla a sagittis nunc. Integer id dui odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse semper eros et imperdiet suscipit. Phasellus nec malesuada est. Quisque dui mi, tincidunt a ve</p>
+                              </div>
+                              <div class="price"> 
+                                                                                                            <span class="price-new">546.100đ</span>
+                                                                                                  </div>
+                              <ul class="function">
+                                                                                                            <li>
+                                       <a href="http://demot103.web4s.vn/?site=cart&amp;act=order&amp;sub=update_cart&amp;item=132&amp;key=addfmodule" title="Mua sản phẩm này">
+                                            <button type="button" class="btn btnitem">
+                                                <i class="fa fa-shopping-cart"></i>
+                                            </button>
+                                        </a>
+                                    </li>
+                                                                                                                                                <li>
+                                       <a href="http://demot103.web4s.vn/?site=wishlist&amp;act=add&amp;id=132" title="">
+                                            <button type="button" class="btn btnitem">
+                                                <i class="fa fa-heart"></i>
+                                            </button>
+                                        </a>
+                                    </li>
+                                                                                                            <li>
+                                       <a href="http://demot103.web4s.vn/?site=compare&amp;act=add&amp;id=132" title="">
+                                            <button type="button" class="btn btnitem">
+                                                <i class="fa fa-exchange"></i>
+                                            </button>
+                                        </a>
+                                    </li>
+                                                                    </ul>
+                            </div>
+                            
+                            <!--item -->
+                            
+                        </div>
+                       
+                                                    
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 col94 mg">
+        
+                            <!--item -->
+                            <div class="product">
+                              <div class="image">
+                                <div class="img-overflow"> 
+                                    <a href="http://demot103.web4s.vn/g-shock-gwx" title="G-SHOCK GWX">
+                                    <img src="http://demot103.web4s.vn/image.php?width=0&amp;height=0&amp;cropratio=&amp;image=http://demot103.web4s.vn/profiles/demot103web4svn/uploads/attach/1414697257_untitled1.jpg" alt="">                   
+                                    </a> 
+                                </div>
+                                
+                                <!--span class="product-label-special-left label">NEW</span-->
+                                                                
+                                <a href="http://demot103.web4s.vn/g-shock-gwx" title="G-SHOCK GWX">
+                                <h3>G-SHOCK GWX</h3>
+                                </a>
+                                <p>Placerat dui sit amet sapien euismod porttitor. Nulla a sagittis nunc. Integer id dui odio. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse semper eros et imperdiet suscipit. Phasellus nec malesuada est. Quisque dui mi, tincidunt a ve</p>
+                              </div>
+                              <div class="price"> 
+                                                                                                            <span class="price-new">763.680đ</span>
+                                                                                                  </div>
+                              <ul class="function">
+                                                                                                            <li>
+                                       <a href="http://demot103.web4s.vn/?site=cart&amp;act=order&amp;sub=update_cart&amp;item=131&amp;key=addfmodule" title="Mua sản phẩm này">
+                                            <button type="button" class="btn btnitem">
+                                                <i class="fa fa-shopping-cart"></i>
+                                            </button>
+                                        </a>
+                                    </li>
+                                                                                                                                                <li>
+                                       <a href="http://demot103.web4s.vn/?site=wishlist&amp;act=add&amp;id=131" title="">
+                                            <button type="button" class="btn btnitem">
+                                                <i class="fa fa-heart"></i>
+                                            </button>
+                                        </a>
+                                    </li>
+                                                                                                            <li>
+                                       <a href="http://demot103.web4s.vn/?site=compare&amp;act=add&amp;id=131" title="">
+                                            <button type="button" class="btn btnitem">
+                                                <i class="fa fa-exchange"></i>
+                                            </button>
+                                        </a>
+                                    </li>
+                                                                    </ul>
+                            </div>
+                            
+                            <!--item -->
+                            
+                        </div>
+                       
+                                                    
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 col94 mg">
+        
+                            <!--item -->
+                            <div class="product">
+                              <div class="image">
+                                <div class="img-overflow"> 
+                                    <a href="http://demot103.web4s.vn/g-shock-gw17" title="G-SHOCK GW">
+                                    <img src="http://demot103.web4s.vn/image.php?width=0&amp;height=0&amp;cropratio=&amp;image=http://demot103.web4s.vn/profiles/demot103web4svn/uploads/attach/1414697426_untitled1.jpg" alt="">                   
+                                    </a> 
+                                </div>
+                                
+                                <!--span class="product-label-special-left label">NEW</span-->
+                                                                
+                                <a href="http://demot103.web4s.vn/g-shock-gw17" title="G-SHOCK GW">
+                                <h3>G-SHOCK GW</h3>
+                                </a>
+                                <p>Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae</p>
+                              </div>
+                              <div class="price"> 
+                                                                                                            <span class="price-new">1.123.375đ</span>
+                                                                                                  </div>
+                              <ul class="function">
+                                                                                                            <li>
+                                       <a href="http://demot103.web4s.vn/?site=cart&amp;act=order&amp;sub=update_cart&amp;item=129&amp;key=addfmodule" title="Mua sản phẩm này">
+                                            <button type="button" class="btn btnitem">
+                                                <i class="fa fa-shopping-cart"></i>
+                                            </button>
+                                        </a>
+                                    </li>
+                                                                                                                                                <li>
+                                       <a href="http://demot103.web4s.vn/?site=wishlist&amp;act=add&amp;id=129" title="">
+                                            <button type="button" class="btn btnitem">
+                                                <i class="fa fa-heart"></i>
+                                            </button>
+                                        </a>
+                                    </li>
+                                                                                                            <li>
+                                       <a href="http://demot103.web4s.vn/?site=compare&amp;act=add&amp;id=129" title="">
+                                            <button type="button" class="btn btnitem">
+                                                <i class="fa fa-exchange"></i>
+                                            </button>
+                                        </a>
+                                    </li>
+                                                                    </ul>
+                            </div>
+                            
+                            <!--item -->
+                            
+                        </div>
+                       
+                                                    
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6 col94 mg">
+        
+                            <!--item -->
+                            <div class="product">
+                              <div class="image">
+                                <div class="img-overflow"> 
+                                    <a href="http://demot103.web4s.vn/g-shock-gw-a153" title="G-Shock-GW-A15">
+                                    <img src="http://demot103.web4s.vn/image.php?width=0&amp;height=0&amp;cropratio=&amp;image=http://demot103.web4s.vn/profiles/demot103web4svn/uploads/attach/1414698653_untitled1.jpg" alt="">                   
+                                    </a> 
+                                </div>
+                                
+                                <!--span class="product-label-special-left label">NEW</span-->
+                                                                
+                                <a href="http://demot103.web4s.vn/g-shock-gw-a153" title="G-Shock-GW-A15">
+                                <h3>G-Shock-GW-A15</h3>
+                                </a>
+                                <p>Nunc facilisis sagittis ullamcorper. Proin lectus ipsum, gravida et mattis vulputate, tristique ut lectus. Sed et lorem nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae</p>
+                              </div>
+                              <div class="price"> 
+                                                                                                            <span class="price-new">3.225.000đ</span>
+                                                                                                  </div>
+                              <ul class="function">
+                                                                                                            <li>
+                                       <a href="http://demot103.web4s.vn/?site=cart&amp;act=order&amp;sub=update_cart&amp;item=112&amp;key=addfmodule" title="Mua sản phẩm này">
+                                            <button type="button" class="btn btnitem">
+                                                <i class="fa fa-shopping-cart"></i>
+                                            </button>
+                                        </a>
+                                    </li>
+                                                                                                                                                <li>
+                                       <a href="http://demot103.web4s.vn/?site=wishlist&amp;act=add&amp;id=112" title="">
+                                            <button type="button" class="btn btnitem">
+                                                <i class="fa fa-heart"></i>
+                                            </button>
+                                        </a>
+                                    </li>
+                                                                                                            <li>
+                                       <a href="http://demot103.web4s.vn/?site=compare&amp;act=add&amp;id=112" title="">
+                                            <button type="button" class="btn btnitem">
+                                                <i class="fa fa-exchange"></i>
+                                            </button>
+                                        </a>
+                                    </li>
+                                                                    </ul>
+                            </div>
+                            
+                            <!--item -->
+                            
+                        </div>
+                       
+                                             
+                                         <!-- Item 2-->
+                    
+                </div>
+                        
+        </div>
+               
+</section>
+    
+    

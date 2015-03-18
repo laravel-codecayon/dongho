@@ -172,7 +172,8 @@ class NewsController extends BaseController {
 				    $data['news_picture'] = $newfilename;
 				    $orgFile = $destinationPath.'/'.$newfilename;
 				    $thumbFile = $destinationPath.'/thumb/'.$newfilename;
-				    SiteHelpers::resizewidth("213",$orgFile,$thumbFile);
+				    //SiteHelpers::resizewidth("213",$orgFile,$thumbFile);
+				    SiteHelpers::cropImage('213' , '142' , $orgFile ,  $extension,	 $thumbFile);
 				    if(Input::get('news_id') != "")
 				    {
 				    	$data_old = $this->model->getRow(Input::get('news_id'));

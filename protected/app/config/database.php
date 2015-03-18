@@ -55,9 +55,9 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'dongho',
-			'username'  => 'root',
-			'password'  => 'root',
+			'database'  => 'nhdono7o_dongho',
+			'username'  => 'nhdono7o_dongho',
+			'password'  => '@123456@',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
