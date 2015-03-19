@@ -5,7 +5,7 @@
              <li @if(count($menu['childs']) > 0 ) class="dropdown" @endif >
                 <a level="1" target="_self"
                 @if($menu['menu_type'] =='external')
-                    href="{{ URL::to($menu['url']."/#")}}" 
+                    href="{{ URL::to($menu['url'].$menu['module'])}}" 
                 @else
                     href="{{ URL::to($menu['module'])}}" 
                 @endif
@@ -21,7 +21,7 @@
                          @if(Request::is($menu2['module']))  @endif">
                             <a tabindex="-1" target="_self"
                                 @if($menu['menu_type'] =='external')
-                                    href="{{ URL::to($menu2['url']."/#")}}" 
+                                    href="{{ URL::to($menu2['url'].$menu['module'])}}" 
                                 @else
                                     href="{{ URL::to($menu2['module'])}}" 
                                 @endif
@@ -35,7 +35,7 @@
                                     <li @if(Request::is($menu3['module']))  @endif>
                                         <a 
                                             @if($menu['menu_type'] =='external')
-                                                href="{{ URL::to($menu3['url']."/#")}}" 
+                                                href="{{ URL::to($menu3['url'].$menu['module'])}}" 
                                             @else
                                                 href="{{ URL::to($menu3['module'])}}" 
                                             @endif                                      

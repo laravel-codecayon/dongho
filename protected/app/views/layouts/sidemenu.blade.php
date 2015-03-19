@@ -87,9 +87,10 @@
 		<li @if(Request::is('News')) class="active" @endif>
 			<a href="{{ URL::to('News')}}"><i class="icon-drawer3"></i> <span class="nav-label">Tin tức</span><span class="fa arrow"></span></a>
 		</li>
-		<!--<li @if(Request::is('customer')) class="active" @endif>
+		<li @if(Request::is('customer')) class="active" @endif>
 			<a href="{{ URL::to('customer')}}"><i class="icon-drawer3"></i> <span class="nav-label">Khách hàng</span><span class="fa arrow"></span></a>
 		</li>
+		<!--
 		<li @if(Request::is('post')) class="active" @endif>
 			<a href="{{ URL::to('post')}}"><i class="icon-drawer2"></i> <span class="nav-label">Bài đăng</span><span class="fa arrow"></span></a>
 		</li>

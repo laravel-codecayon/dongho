@@ -80,7 +80,7 @@ return array(
 	|
 	*/
 
-	'username' => "ducvienqtdn3@gmail.com",
+	'username' => "blackorwhitemor@gmail.com",
 
 	/*
 	|--------------------------------------------------------------------------
@@ -93,7 +93,7 @@ return array(
 	|
 	*/
 
-	'password' => "cockblaze",
+	'password' => "11023776114",
 
 	/*
 	|--------------------------------------------------------------------------

@@ -14,7 +14,7 @@ class HomeController extends BaseController {
 	|	Route::get('/', 'HomeController@showWelcome');
 	|
 	*/
-	protected  $perpage = 15;
+	protected  $perpage = 9;
 
 	public function __construct() {
 
@@ -22,6 +22,112 @@ class HomeController extends BaseController {
 		$this->lang = Session::get('lang') == '' ? CNF_LANG : Session::get('lang');
 		 $this->layout = "layouts.".CNF_THEME.".index";
 
+	}
+
+	public function tintuc(){
+		$sort = 'created';
+		$order = 'desc';
+		$filter = " AND news_status = 1 ";
+
+		$page = (!is_null(Input::get('page')) && Input::get('page') != '') ? Input::get('page') : "1";
+		$params = array(
+			'page'		=> $page ,
+			'limit'		=> ( $this->perpage ) ,
+			'sort'		=> $sort ,
+			'order'		=> $order,
+			'params'	=> $filter,
+			//'global'	=> (isset($this->access['is_global']) ? $this->access['is_global'] : 0 )
+		);
+		$model = new News();
+		$results = $model->getRows( $params );
+		// Build pagination setting
+		$page = $page >= 1 && filter_var($page, FILTER_VALIDATE_INT) !== false ? $page : 1;	
+		$pagination = Paginator::make($results['rows'], $results['total'],$params['limit']);
+		//$data['order'] 		= $data_order;
+		//$data['province']	= $data_province;
+		$data['data']		= $results['rows'];
+		$data['page']		= $page;
+		$data['numpage']	= $params['limit'];
+		// Build Pagination 
+		$data['pagination']	= $pagination;
+		// Build pager number and append current param GET
+		$data['pager'] 		= $this->injectPaginate();
+
+
+		$this->data['pageTitle'] = "Danh sách tin tức đồng hồ";
+		$this->data['pageNote'] = CNF_APPNAME;
+		$page = 'pages.template.tintuc';
+		$page = SiteHelpers::renderHtml($page);
+		$this->layout->nest('content',$page,$data)->with('page', $this->data)->with('menu','tintuc');
+	}
+
+	public function detailtintuc($alias = '', $id = ''){
+		$new = DB::table('news')->where('news_id','=',$id)->where('news_status','=','1')->first();
+		if(count($new) == 0){
+			return Redirect::to('');
+		}
+		$news = DB::table('news')->where('news_id','!=',$id)->where('news_status','=','1')->orderby('created','DESC')->limit(5)->get();
+		$data['new'] = $new;
+		$data['news'] = $news;
+		$this->data['pageTitle'] = $new->news_name;
+		$this->data['pageNote'] = CNF_APPNAME;
+		$page = 'pages.template.detailnews';
+		$page = SiteHelpers::renderHtml($page);
+		$this->layout->nest('content',$page,$data)->with('page', $this->data)->with('menu','detailnews');
+	}
+
+	public function contactus(){
+		$input = array(
+				"name"=>'',
+				"phone"=>'',
+				"email"=>'',
+				"address"=>'',
+				"content"=>'',
+				"subject"=>''
+			);
+		if(Session::has('input_rd')){
+			$input = Session::get('input_rd');
+		}
+		$data['input'] = $input;
+
+
+		$page = 'pages.template.contactus';
+
+		$this->data['pageTitle'] = 'Liên hệ';
+		$this->data['pageNote'] = CNF_APPNAME;
+		$page = SiteHelpers::renderHtml($page);
+		$this->layout->nest('content',$page,$data)->with('page', $this->data);
+	}
+
+	public function  postContactform()
+	{
+	
+		$this->beforeFilter('csrf', array('on'=>'post'));
+		$rules = array(
+				'name'		=>'required',
+				'email'	=>'required|email',
+				'phone'	=>'required|Numeric',
+				'content'	=>'required',
+				'subject'	=>'required',
+		);
+		if(CNF_RECAPTCHA =='true') $rules['recaptcha_response_field'] = 'required|recaptcha';
+		$validator = Validator::make(Input::all(), $rules);	
+		if ($validator->passes()) 
+		{
+			
+			$data = array('name'=>Input::get('name'),'phone'=>Input::get('phone'),'email'=>Input::get('email'),'content'=>Input::get('content'),'subject'=>Input::get('subject')); 
+
+			Mail::send('emails.contact', $data, function($message)
+			{
+				$message->from( Input::get('email'), Input::get('name') );
+			    $message->to(CNF_EMAIL, 'Admin')->subject(Input::get('subject'));
+			});
+			return Redirect::to(URL::to(''))->with('message', SiteHelpers::alert('success','Yêu cầu của bạn đã được gởi ! Chúng tôi sẻ liên hệ với bạn trong thời gian sơm nhất'));	
+				
+		} else {
+			return Redirect::to(URL::to('')."/lien-he.html")->with('message_contact', SiteHelpers::alert('error','Vui lòng khắc phục các lỗi bên dưới'))->with('input_rd',Input::all())
+			->withErrors($validator)->withInput();
+		}		
 	}
 
 	public function pdf(){
@@ -75,6 +181,7 @@ class HomeController extends BaseController {
 			$data['created'] = time();
 			$data['password'] = md5($data['password']);
 			$data['code'] = md5(time());
+			$data['birthday'] = strtotime($data['birthday']);
 			$mdCus = new Customer();
 
 			if(!is_null(Input::file('file')))
@@ -100,7 +207,7 @@ class HomeController extends BaseController {
 				$message->from( CNF_EMAIL, 'Admin' );
 			    $message->to(Input::get('email'), Input::get('name'))->subject('Kích hoạt tài khoản');
 			});
-			return Redirect::to('thong-bao.html')->with('message', SiteHelpers::alert('success','Đăng ký thành công ! Email kích hoạt dã được gửi vào Email của bạn Vui lòng kích hoạt để sử dụng dịch vụ chủa chúng tôi'));
+			return Redirect::to('')->with('message', SiteHelpers::alert('success','Đăng ký thành công ! Email kích hoạt dã được gửi vào Email của bạn Vui lòng kích hoạt !'));
 		}
 		else{
 			return Redirect::to('dang-ky.html')->with('message_dangky', SiteHelpers::alert('error','Vui lòng xác nhận các thông tin bên dưới'))->with('input_rd',Input::all())->withErrors($validator)->withInput();
@@ -119,7 +226,7 @@ class HomeController extends BaseController {
 		$data['code'] = '';
 		$data['status'] = '1';
 		DB::table('customer')->where('customer_id','=',$customer->customer_id)->update($data);
-		return Redirect::to('thong-bao.html')->with('message', SiteHelpers::alert('success','Kích hoạt thành công ! Hãy đăng nhập ngay để tham gia với chúng tôi !'));
+		return Redirect::to('')->with('message', SiteHelpers::alert('success','Kích hoạt thành công ! Hãy đăng nhập ngay để tham gia với chúng tôi !'));
 	}
 
 	public function getDangnhap(){
@@ -1111,65 +1218,6 @@ class HomeController extends BaseController {
 		$html = SiteHelpers::renderHtml('pages.template.category');
 		$this->layout->nest('content',$html,$data);
 	}*/
-	
-	public function  postContactform()
-	{
-	
-		$this->beforeFilter('csrf', array('on'=>'post'));
-		$rules = array(
-				'name'		=>'required',
-				'email'	=>'required|email',
-				'phone'	=>'required|Numeric',
-				'content'	=>'required',
-				'subject'	=>'required',
-				'recaptcha_response_field'=>'required|recaptcha',
-		);
-		$validator = Validator::make(Input::all(), $rules);	
-		if ($validator->passes()) 
-		{
-			
-			$data = array('name'=>Input::get('name'),'phone'=>Input::get('phone'),'email'=>Input::get('email'),'content'=>Input::get('content'),'subject'=>Input::get('subject')); 
-			/*$message = View::make('emails.contact', $data); 		
-			$to 		= 	CNF_EMAIL;
-			$subject 	= Input::get('subject');
-			$headers  	= 'MIME-Version: 1.0' . "\r\n";
-			$headers 	.= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-			$headers 	.= 'From: '.Input::get('name').' <'.Input::get('email').'>' . "\r\n";
-			mail($to, $subject, $message, $headers);*/
-			Mail::send('emails.contact', $data, function($message)
-			{
-				$message->from( Input::get('email'), Input::get('name') );
-			    $message->to(CNF_EMAIL, 'Admin')->subject(Input::get('subject'));
-			});
-			return Redirect::to(URL::to('')."/thong-bao.html")->with('message', SiteHelpers::alert('success','Yêu cầu của bạn đã được gởi !'));	
-				
-		} else {
-			return Redirect::to(URL::to('')."/contact-us.html")->with('message_contact', SiteHelpers::alert('error','Vui lòng khắc phục các lỗi bên dưới'))->with('input_rd',Input::all())
-			->withErrors($validator)->withInput();
-		}		
-	}
-
-	public function contactus(){
-		$input = array(
-				"name"=>'',
-				"phone"=>'',
-				"email"=>'',
-				"content"=>'',
-				"subject"=>''
-			);
-		if(Session::has('input_rd')){
-			$input = Session::get('input_rd');
-		}
-		$data['input'] = $input;
-
-
-		$page = 'pages.template.contactus';
-
-		$this->data['pageTitle'] = 'Contact US';
-		$this->data['pageNote'] = 'Welcome To Our Site';
-		$page = SiteHelpers::renderHtml($page);
-		$this->layout->nest('content',$page,$data)->with('page', $this->data);
-	}
 
 	public function  getLang($lang='en')
 	{

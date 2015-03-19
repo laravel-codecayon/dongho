@@ -31,7 +31,7 @@
 				
 					<tr>
 						<td width='30%' class='label-view text-right'>{{ Lang::get('core.table_name') }}</td>
-						<td>{{ $row->name }} </td>
+						<td>{{{ $row->name }}} </td>
 						
 					</tr>
 				
@@ -49,13 +49,13 @@
 				
 					<tr>
 						<td width='30%' class='label-view text-right'>{{ Lang::get('core.username') }}</td>
-						<td>{{ $row->username }} </td>
+						<td>{{{ $row->username }}} </td>
 						
 					</tr>
 				
 					<tr>
 						<td width='30%' class='label-view text-right'>{{ Lang::get('core.table_address') }}</td>
-						<td>{{ $row->address }} </td>
+						<td>{{{ $row->address }}} </td>
 						
 					</tr>
 				

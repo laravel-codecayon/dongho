@@ -161,7 +161,16 @@
                 <div class="st-content-inner">
                     <div class="main clearfix">
                     	<!--begin top-->
-
+                        @if(Session::has('message'))
+                           {{ Session::get('message') }}
+                            <script>
+                                $(document).ready(function(){       
+                                    setTimeout(function(){
+                                        $('.noti-done,.noti-error,.noti-info').hide();
+                                    }, 3000);               
+                                });
+                            </script>
+                      @endif
                     	<!--icon menu su dụng trong giao diện mobile-->
 <div id="st-trigger-effects" class="column hidden-lg hidden-md">
 	<button data-effect="st-effect-3">
@@ -389,7 +398,7 @@
 </div>
 
 
-</div></div></div></section><section class="row-section top-menu " style='background:#00BE8C !important;  '><div class="container">		<div class="hidden-sm hidden-xs">
+</div></div></div></section><section class="row-section top-menu " style='background:#D50133 !important;  '><div class="container">		<div class="hidden-sm hidden-xs">
        @include('layouts/dongho/topbar')
     </div>
     
@@ -414,119 +423,9 @@
                        
                         <footer>
                          
-                        <section class="row-section footer-banner footer-banner  row_0" style='  '><div class="container"><div class="row"><div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">		 
-		  
-			<section class="box-category">		
-		      <div class="banner-small">
-		      	<a href="#">
-	        	<img src="http://demot103.web4s.vn/profiles/demot103web4svn/uploads/attach/1414702560_untitled3.jpg" alt="1414702560_untitled3.jpg">
-	        	</a>
-	          </div> 
-	         </section>
-	        
-    </div><div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">	    
-    	    	<section class="banner-big clearfix">        	      
-	      	<a href="#">
-        	<img src="http://demot103.web4s.vn/profiles/demot103web4svn/uploads/attach/1414702980_untitled5.jpg" alt="1414702980_untitled5.jpg">
-        	</a>
-    	</section>
-    	    </div></div></div></section><section class="row-section footer-post_latest footer-html  row_1" style='  '><div class="container"><div class="row"><div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><!--$css_item,$box_width,$position,$num_item_row -->
-	
-	
-	
-	 <section class="news clearfix">
-            <h2>
-                <span>Tin tức mới nhất</span>
-                
-            </h2>
-        
-        	                                            
-                			            <article class="">
-		                <a href="http://demot103.web4s.vn/innovation-meets-design-in-casio-g-shock’s-first-women’s-collection" title="Innovation Meets Design in Casio G-SHOCK’s First Women’s Collection">
-		                    <img src="http://demot103.web4s.vn/profiles/demot103web4svn/uploads/attach/thumbnail/1415306592_untitled1.jpg" alt="Innovation Meets Design in Casio G-SHOCK’s First Women’s Collection"/>
-		                    <h4>Innovation Meets Design in Casio G-SHOCK’s First Women’s Collection</h4>
-		                </a>                                
-		                <p>DOVER, N.J., July 31, 2014 &amp;mdash; Following its 30th anniversary, G-SHOCK looks to the future; driving the brand into the contemporary women&amp;rsquo;s fashion space with the launch of its first watch line exclusively designed for women.</p>
-		            </article>
-		            
-		            		            	                            
-                			            
-		            <article class="clearfix">
-		            			                <ul>
-		                	<li>
-		                	<a href="http://demot103.web4s.vn/george-r.r.-martin-wishes-the-39-game-of-thrones-39-costumes-were-crazier" title="George R.R. Martin Wishes the &#39;Game of Thrones&#39; Costumes Were Crazier">
-		                	George R.R. Martin Wishes the &#39;Game of Thrones&#39; Costumes Were Crazier		                	</a>
-		                	</li>
-		                	
-		                						
-		                
-		            
-		            		            	                            
-                			            
-		            <article class="clearfix">
-		            								<li>
-		                	<a href="http://demot103.web4s.vn/christian-siriano-tells-us-what-judging-the-teen-version-of-39-project-runway-39-is-like" title="Christian Siriano Tells Us What Judging the Teen Version of &#39;Project Runway&#39; Is Like">
-		                	Christian Siriano Tells Us What Judging the Teen Version of &#39;Project Runway&#39; Is Like		                	</a>
-		                	</li>
-												
-		                
-		            
-		            		            	                            
-                			            
-		            <article class="clearfix">
-		            			                
-		                	<li>
-		                	<a href="http://demot103.web4s.vn/a-complete-history-of-taylor-swift-39-s-style" title="A Complete History of Taylor Swift&#39;s Style">
-		                	A Complete History of Taylor Swift&#39;s Style		                	</a>
-		                	</li>			                    
-						</ul>
-						<a href="http://demot103.web4s.vn/danh-muc-bai-viet.html"  title="" class="all"><i class="fa fa-arrow-circle-o-right"></i>Xem tất cả</a>
-		            </article>
-		            
-												
-		                
-		            
-		            		            	                                           
-        </section>
-   
-	
-	
-        
-       </div><div class="col-lg-6 col-md-6 col-sm-12 col-xs-12"><section class="accordion">
-<h2><span>Lý do nên mua hàng chính hãng</span></h2>
-
-<div class="panel-group" id="accordion">
-<div class="panel panel-default">
-<div class="panel-heading">
-<h4 class="panel-title"><a class="accordion-toggle" data-parent="#accordion" data-toggle="collapse" href="#collapseOne">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore </a></h4>
-</div>
-
-<div class="panel-collapse collapse in" id="collapseOne">
-<div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven&#39;t heard of them accusamus labore sustainable VHS.</div>
-</div>
-</div>
-
-<div class="panel panel-default">
-<div class="panel-heading">
-<h4 class="panel-title"><a class="accordion-toggle" data-parent="#accordion" data-toggle="collapse" href="#collapseTwo">Lorem ipsum dolor sit amet, consectetuer adipiscing elit </a></h4>
-</div>
-
-<div class="panel-collapse collapse" id="collapseTwo">
-<div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven&#39;t heard of them accusamus labore sustainable VHS.</div>
-</div>
-</div>
-
-<div class="panel panel-default">
-<div class="panel-heading">
-<h4 class="panel-title"><a class="accordion-toggle" data-parent="#accordion" data-toggle="collapse" href="#collapseThree">Lorem ipsum dolor sit amet, consectetuer adipiscing elit </a></h4>
-</div>
-
-<div class="panel-collapse collapse" id="collapseThree">
-<div class="panel-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven&#39;t heard of them accusamus labore sustainable VHS.</div>
-</div>
-</div>
-</div>
-</section></div></div></div></section><section class="row-section footer-slideshow  row_2" style='  '><div class="container"><!-----Slider------>
+                        <section class="row-section footer-banner footer-banner  row_0" style='  '><div class="container">
+                            
+                        </div></section><section class="row-section footer-slideshow  row_2" style='  '><div class="container"><!-----Slider------>
 		<!--CUSTOMER-->	
 		<section id="customer" class="clearfix">
 			<div class="itemcus">
@@ -664,7 +563,7 @@
 <p>enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor</p>
 </section>
 </div></section><section class="row-section footer-html  row_5" style='background:#05080d !important;  '><div class="container"><div class="copyright">
-<p>Bản quyền và thiết kế bởi <a href="#">Web4steps</a></p>
+
 </div>
 </div></section>                        
                         </footer>

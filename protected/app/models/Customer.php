@@ -31,9 +31,9 @@ class Customer extends BaseModel  {
 			"password" => "required|alpha_num|between:5,20",
 			"repassword" => "required|alpha_num|same:password",
 			//"address" => "required",
-			"provinceid" => "required",
-			"districtid" => "required",
-			"wardid" => "required",
+			"provinceid" => "required|Numeric",
+			"districtid" => "required|Numeric",
+			"wardid" => "required|Numeric",
 			'file'	=>'mimes:gif,png,jpg,jpeg|max:20000',
 		);
 	

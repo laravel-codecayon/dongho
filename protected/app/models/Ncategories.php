@@ -30,12 +30,14 @@ class Ncategories extends BaseModel  {
 	public static $rules=array(
 			"CategoryName" => "required",
 			"Description" => "required",
+			"CategoryCode" => "required|unique:categories,CategoryCode",
 			"file" => "mimes:gif,png,jpg,jpeg|image|max:20000",
 		);
 	public function columnTable(){
 		$array = array(
 			"CategoryID" => array("label"=>Lang::get('core.table_id'), "type"=>"text", "name"=>"CategoryID", "value" => ""),
 			"CategoryName" => array("label"=>Lang::get('core.table_name'), "type"=>"text", "name"=>"CategoryName", "value" => ""),
+			"CategoryCode" => array("label"=>Lang::get('core.table_code'), "type"=>"text", "name"=>"CategoryCode", "value" => ""),
 			"created" => array("label"=>Lang::get('core.table_created'), "type"=>"date", "name"=>"created", "value" => ""),
 			"status" => array("label"=>Lang::get('core.table_status'), "type"=>"radio", "name"=>"status", "value" => "","option"=>array("0"=>Lang::get('core.disable'),"1"=>Lang::get('core.enable'))),
 			//"UnitPrice" => array("label"=>"Price", "type"=>"text", "name"=>"UnitPrice", "value" => ""),

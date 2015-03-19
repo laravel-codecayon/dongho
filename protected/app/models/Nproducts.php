@@ -26,6 +26,7 @@ class Nproducts extends BaseModel  {
 	public static $rules=array(
 			"ProductName" => "required",
 			"UnitPrice" => "numeric",
+			"CategoryID" => "required|numeric",
 			"file" => "mimes:gif,png,jpg,jpeg|image|max:20000",
 		);
 	
@@ -33,6 +34,7 @@ class Nproducts extends BaseModel  {
 		$array = array(
 			"ProductID" => array("label"=>Lang::get('core.table_id'), "type"=>"text", "name"=>"ProductID", "value" => ""),
 			"ProductName" => array("label"=>Lang::get('core.table_name'), "type"=>"text", "name"=>"ProductName", "value" => ""),
+			"ProductCode" => array("label"=>Lang::get('core.table_code'), "type"=>"text", "name"=>"ProductCode", "value" => ""),
 			"UnitPrice" => array("label"=>Lang::get('core.table_price'), "type"=>"text", "name"=>"UnitPrice", "value" => ""),
 			"CategoryID" => array("label"=>Lang::get('core.table_category'), "type"=>"select", "name"=>"CategoryID", "value" => "", "model"=>"categories", "id"=>"CategoryID", "show" =>"CategoryName"),
 			"type_id" => array("label"=>Lang::get('core.table_type'), "type"=>"select", "name"=>"type_id", "value" => "", "model"=>"product_type", "id"=>"type_id", "show" =>"type_name"),

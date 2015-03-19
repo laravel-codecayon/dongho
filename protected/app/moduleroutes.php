@@ -5,7 +5,7 @@
 					Route::controller('Promotion', 'PromotionController');
 					Route::controller('Slideshow', 'SlideshowController');
 					Route::controller('articles', 'ArticlesController');
-					//Route::controller('Customer', 'CustomerController');
+					Route::controller('customer', 'CustomerController');
 					//Route::controller('post', 'PostController');
 					//Route::controller('advertise', 'AdvertiseController');
 					Route::controller('producttype', 'ProducttypeController');

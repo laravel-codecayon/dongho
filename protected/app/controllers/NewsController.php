@@ -166,7 +166,7 @@ class NewsController extends BaseController {
 				$destinationPath = './uploads/news/';
 				$filename = $file->getClientOriginalName();
 				$extension = $file->getClientOriginalExtension(); //if you need extension of the file
-				$newfilename = SiteHelpers::seoUrl( trim(Input::get('news_name'))).'_'.time().'.'.$extension;
+				$newfilename = 'news_'.time().'.'.$extension;
 				$uploadSuccess = Input::file('file')->move($destinationPath, $newfilename);
 				if( $uploadSuccess ) {
 				    $data['news_picture'] = $newfilename;

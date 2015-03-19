@@ -85,3 +85,28 @@
 
 <div class="main"><iframe frameborder="0" height="200" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d26081603.294420466!2d-95.677068!3d37.06250000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1414725941877" style="border:0" width="100%"></iframe></div>
 </section>-->
+@if(isset($menu) && $menu != "detailnews" && $menu != "tintuc" )
+{{--*/ $news = SiteHelpers::getMenuNews(); /*--}}
+<section class="box-category">
+                    <div class="heading">
+                        <h2><span>Tin tức mới nhất</span></h2>
+                    </div>
+                    
+                    <div class="main">
+                        <ul class="list-post-latest list_post">
+                            @foreach($news as $new)
+                            <li>
+                                <a href="{{URL::to('')}}/tin-tuc/{{$new->news_alias}}-{{$new->news_id}}.html" title="{{{$new->news_name}}}"> 
+                                    <div class="img-overflow">   
+                                        <img src="{{URL::to('')}}/uploads/news/thumb/{{$new->news_picture}}" alt="{{{$new->news_name}}}"/>
+                                    </div>
+                                    <p>{{{$new->news_name}}}</p>
+                                    <span>{{date('d/m/Y',$new->created)}}</span>
+                                </a>
+                            </li>
+                            @endforeach
+                        </ul>
+
+                    </div>                    
+        </section>
+@endif

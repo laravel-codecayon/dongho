@@ -10,7 +10,7 @@ define('CNF_FOOTER','<p>-Trụ Sở Ch&iacute;nh: 235 Nguyễn Văn Cừ, Quận
 define('CNF_APPNAME','Dongho.Com');
 define('CNF_APPDESC','Internal PHP Application');
 define('CNF_COMNAME','Dongho.Com');
-define('CNF_EMAIL','yenthao1111@gmail.com');
+define('CNF_EMAIL','blackorwhitemor@gmail.com');
 define('CNF_METAKEY','Dịch Vụ Uber, DichvuUber,UBer, dichung, dinhoxe,');
 define('CNF_METADESC','Taxi Tự Do Cho Mọi Nhà');
 define('CNF_PHONE','0906.38.75.39');

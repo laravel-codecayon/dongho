@@ -117,13 +117,23 @@ class SiteHelpers
 		return Ncategories::where('status','=','1')->where('lang','=',$lang)->orderBy('CategoryName','asc')->get();
 	}
 
+	public static function getCategoryCode($id = 0){
+		$data = Ncategories::where('status','=','1')->where('CategoryID','=',$id)->first();
+		return $data;
+	}
+
 	public static function getMenuProductSale(){
 		$lang = Session::get('lang') == '' ? CNF_LANG : Session::get('lang');
 		$pro = Promotion::where('status','=','1')->orderBy('created','desc')->limit(1)->first();
 		if(count($pro) <= 0){
 			return false;
 		}
-		return Nproducts::where('status','=','1')->where('lang','=',$lang)->where('id_promotion','=',$pro->id_promotion)->orderBy('created','desc')->get();
+		return Nproducts::where('status','=','1')->where('lang','=',$lang)->where('id_promotion','=',$pro->id_promotion)->orderBy('created','desc')->limit(10)->get();
+	}
+
+	public static function getMenuNews(){
+		$lang = Session::get('lang') == '' ? CNF_LANG : Session::get('lang');
+		return News::where('news_status','=','1')->where('lang','=',$lang)->orderBy('created','desc')->limit(5)->get();
 	}
 
 	public static function getProductMain($type = 0){
@@ -142,25 +152,6 @@ class SiteHelpers
 		return $post;
 	}
 
-	public static function listTinhthanh(){
-		$output = '';
-		$j=0;
-		$k=1;
-		$province = DB::table('province')->get();
-		for($i = 0;$i < 63;$i ++){
-			$link = URL::to('')."/tinh-thanh.html?province=".$province[$i]->provinceid;
-			$output .= $j == 0 ? '<ul class="column column'.$k.'">' : '';
-			$output .= '<li><a href="'.$link.'">'.$province[$i]->name.'</a></li>';
-			$j++;
-			if($j == 11){
-				$k ++ ;
-				$j = 0;
-				$output .= '</ul>';
-			}
-		}
-		return $output;
-	}
-	
 	public static function getAdvertise($type = 1){
 		$limit = $type == 0 ? 2 : 1;
 		$data = Advertise::where('position','=',$type)->where('status','=',1)->limit($limit)->get();
@@ -880,7 +871,7 @@ public static function alphaID($in, $to_num = false, $pad_up = false, $passKey =
 				break;
 			
 			case 'text';			
-				$form = $data->$field['name'];
+				$form = htmlspecialchars($data->$field['name']);
 				break;
 			case 'date';			
 				$form = date('Y-m-d',$data->$field['name']);
@@ -1165,9 +1156,7 @@ public static function alphaID($in, $to_num = false, $pad_up = false, $passKey =
 			';			
 		} elseif ($task =='success') {
 			$alert ='
-			<div class="alert alert-success fade in block-inner">
-
-			<i class="icon-checkmark-circle"></i> '. $message.' </div>
+			<div class="noti-done" ><div class="container"><i class="fa fa-check"></i>'. $message.' </div></div>
 			';			
 		} elseif ($task =='warning') {
 			$alert ='

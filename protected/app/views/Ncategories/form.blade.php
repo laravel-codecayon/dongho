@@ -52,6 +52,17 @@
 									 	
 									 </div>
 								  </div> 					
+								  @if($id == '')
+								  <div class="form-group  " >
+									<label for="CategoryName" class=" control-label col-md-4 text-left"> {{ Lang::get('core.table_code') }} </label>
+									<div class="col-md-6">
+									  {{ Form::text('CategoryCode', $row['CategoryCode'],array('class'=>'form-control', 'placeholder'=>'',   )) }} 
+									 </div> 
+									 <div class="col-md-2">
+									 	
+									 </div>
+								  </div>
+								  @endif
 								  <div class="form-group  " >
 									<label for="Description" class=" control-label col-md-4 text-left"> {{ Lang::get('core.category_des') }} </label>
 									<div class="col-md-6">

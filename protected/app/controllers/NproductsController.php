@@ -302,8 +302,11 @@ class NproductsController extends BaseController {
 			$data['created'] = time();
 			$data['slug'] =  SiteHelpers::seoUrl( trim($data['ProductName']));
 			$data['created'] =  time();
-			
+			$data['ProductCode'] = '';
 			$ID = $this->model->insertRow($data , Input::get('ProductID'));
+			$data_cat = SiteHelpers::getCategoryCode($data['CategoryID']);
+			$data_update = array('ProductCode' => $data_cat->CategoryCode.'-'.$ID);
+			$this->model->insertRow($data_update , $ID);
 			/*if(Input::file('multi_file')[0] != "")
 			{
 				$model_img_pro = new Imagesproduct();

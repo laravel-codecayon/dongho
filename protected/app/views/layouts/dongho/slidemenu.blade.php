@@ -25,7 +25,7 @@
 				?>
                 <div class="item {{$class}}">
                     <a href="{{$sl->slideshow_link}}">	
-                      <img src="{{URL::to('')}}/uploads/slideshow/{{$sl->slideshow_image}}" alt="">
+                      <img src="{{URL::to('')}}/uploads/slideshow/thumb/{{$sl->slideshow_image}}" alt="">
                     </a>
                 </div>
                 <?php

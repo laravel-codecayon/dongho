@@ -218,6 +218,7 @@ return array(
 	"table_type"				=> "Loại",
 	"table_sex"					=> "Giới tính",
 	"table_position"			=> "Vị trí",
+	"table_code"				=> "Code",
 
 
 	"order_new"					=> "Mới",
